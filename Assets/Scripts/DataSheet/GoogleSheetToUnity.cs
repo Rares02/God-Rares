@@ -9,7 +9,7 @@ namespace GoogleSheet {
         /// <summary>
         /// Set this as callback: result => { googleSheet = result; }
         /// </summary>
-        IEnumerator ObtainSheetData(string link, System.Action<GoogleSheet> callback) {
+        public static IEnumerator ObtainSheetData(string link, System.Action<GoogleSheet> callback) {
             UnityWebRequest www = UnityWebRequest.Get(link);
             yield return www.SendWebRequest();
             if (www.result == UnityWebRequest.Result.ConnectionError || www.result == UnityWebRequest.Result.ProtocolError) {

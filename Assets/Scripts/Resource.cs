@@ -6,14 +6,14 @@ public class Resource : MonoBehaviour {
 
     private float quantity;
 
-    private void Start() {
-        quantity = 0;
+    public Resource(float quantity) {
+        this.quantity = quantity;
     }
 
-    private void AddResource(float quantity) {
+    public void AddResource(float quantity) {
         this.quantity += quantity;
     }
-    private void RemoveQuantity(float quantity) {
+    public void RemoveQuantity(float quantity) {
         this.quantity -= quantity;
     }
 

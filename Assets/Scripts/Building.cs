@@ -10,6 +10,7 @@ public class Building : MonoBehaviour {
 
     IEnumerator GenerateResources() {
         yield return new WaitForSeconds(building.TimeToGenerate);
+        building.ResourceToGenerate.AddResource(building.AmountToGenerate);
     }
 
 }
