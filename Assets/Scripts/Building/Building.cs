@@ -11,10 +11,4 @@ public class Building : MonoBehaviour {
     public Resource ResourceToGenerate => resourceToGenerate;
     public float AmountToGenerate => amountToGenerate;
     public float TimeToGenerate => timeToGenerate;
-
-    IEnumerator GenerateResources() {
-        yield return new WaitForSeconds(timeToGenerate);
-        resourceToGenerate.AddResource(amountToGenerate);
-    }
-
 }
