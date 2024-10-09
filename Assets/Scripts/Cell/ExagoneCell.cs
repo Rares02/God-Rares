@@ -12,6 +12,7 @@ public class ExagoneCell : MonoBehaviour {
         buildingViewer.SetClickUIForBuildingCell(this);
     }
     public void OnSelect() {
+        HighLightCell();
         buildingViewer.SetSelectUIForBuildingCell(this);
     }
 
@@ -25,6 +26,10 @@ public class ExagoneCell : MonoBehaviour {
             Destroy(transform.GetChild(0).gameObject);
         }
         Instantiate(prefab, transform);
+    }
+
+    private void HighLightCell() {
+        
     }
 }
 
