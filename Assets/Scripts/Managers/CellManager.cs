@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class CellManager : MonoBehaviour
 {
-    [SerializeField] private LayerMask layerMask;
     public BuildingViewer bv;
     private void Update() {
         if(InputManager.TryRaycast(4000, out RaycastHit hit)) {

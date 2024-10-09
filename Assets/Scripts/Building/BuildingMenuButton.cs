@@ -2,17 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BuildingMenuButton : MonoBehaviour
+public class BuildingMenuButton : GenericButton
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+    private void SetupButton() {
+       
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

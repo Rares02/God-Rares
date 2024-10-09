@@ -6,7 +6,6 @@ public class InputManager : MonoBehaviour
 {
     [SerializeField] private PlayerInput input;
     public BuildingViewer bv;
-    public LayerMask layerMask;
     private static Vector2 mousePosition;
 
 

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BuildingMenuPanel : BuildingPanel {
     private ExagoneCell currentCell;
-    [SerializeField] private GenericButton button;
+    [SerializeField] private BuildingMenuButton button;
     [SerializeField] private GameObject content;
 
     [SerializeField] private Building[] buildings;
@@ -22,8 +22,10 @@ public class BuildingMenuPanel : BuildingPanel {
     }
     private void GenerateButtonList() {
         ClearButtons();
-        foreach (var building in buildings) {
-            Instantiate(button, content.transform);
+        for (int i = 0; i < buildings.Length; i++){
+            BuildingMenuButton newButton = Instantiate(button, content.transform);
+            int index = i;
+            newButton.OnClick_Get.AddListener(() => { BuyBuilding(index); });
         }
     }
 
