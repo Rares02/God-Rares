@@ -5,9 +5,10 @@ using UnityEngine;
 public class BuildingMenuPanel : BuildingPanel {
     private ExagoneCell currentCell;
 
-    private Building[] buildings = new Building[2] { new Building(), null};
+    [SerializeField] private Building[] buildings;
     public void BuyBuilding(int index) {
         currentCell.SetNewBuilding(buildings[index]);
+        CloseMenu();
     }
     public void OpenMenu(ExagoneCell exagoneCell) {
         currentCell = exagoneCell;

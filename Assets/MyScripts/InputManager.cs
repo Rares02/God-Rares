@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
 public class InputManager : MonoBehaviour
@@ -6,26 +7,36 @@ public class InputManager : MonoBehaviour
     [SerializeField] private PlayerInput input;
     public BuildingViewer bv;
     public LayerMask layerMask;
+    private static Vector2 mousePosition;
+
+
+    private void Update() {
+        mousePosition = input.actions["MousePosition"].ReadValue<Vector2>();
+    }
     public void MouseLeft(InputAction.CallbackContext context) {
         if (context.phase == InputActionPhase.Performed) {
-            if(TryRayOnTerrain(4000, layerMask, out RaycastHit hit)) {
-
-                if(hit.transform.TryGetComponent(out ExagoneCell exagoneCell)){
-                    exagoneCell.OnClick();
+            if(TryRaycast(4000, out RaycastHit hit)) {
+                Debug.Log(hit.transform.gameObject.layer);
+                if (hit.transform.gameObject.layer == LayerMask.NameToLayer("Default")) {
+                    if (hit.transform.TryGetComponent(out ExagoneCell exagoneCell)) {
+                        exagoneCell.OnClick();
+                    }
                 }
-                
+                else if (hit.transform.gameObject.layer == LayerMask.NameToLayer("Water")) {
+                    bv.CloseAllPanels();
+                }
             }
-            else {
-                bv.CloseAllPanels();
-            }
+
         }
         if (context.phase == InputActionPhase.Canceled) {
         }
     }
 
-    public static bool TryRayOnTerrain(float maxDistance, LayerMask layerMask, out RaycastHit hit) {
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        if (Physics.Raycast(ray, out hit, maxDistance, layerMask)) { 
+
+
+    public static bool TryRaycast(float maxDistance, out RaycastHit hit) {
+        Ray ray = Camera.main.ScreenPointToRay(new Vector3(mousePosition.x, mousePosition.y, 0));
+        if (Physics.Raycast(ray, out hit, maxDistance) && !EventSystem.current.IsPointerOverGameObject()) { 
             return true;
         }
         return false;

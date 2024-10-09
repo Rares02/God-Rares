@@ -17,19 +17,14 @@ public class ExagoneCell : MonoBehaviour {
 
     public void SetNewBuilding(Building building) {
         currentBuilding = building;
-        UpdateBuildingPrefab(building.Prefab);
+        UpdateBuildingPrefab(building.gameObject);
     }
 
     private void UpdateBuildingPrefab(GameObject prefab) {
         if(transform.childCount != 0) {
-            Destroy(transform.GetChild(0));
+            Destroy(transform.GetChild(0).gameObject);
         }
         Instantiate(prefab, transform);
     }
-}
-
-
-public class Building {
-    public GameObject Prefab;
 }
 

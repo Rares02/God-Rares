@@ -8,7 +8,6 @@ public class Building : MonoBehaviour {
     private float amountToGenerate;
     private float timeToGenerate;
     private float costToBuild;
-
     public Resource ResourceToGenerate => resourceToGenerate;
     public float AmountToGenerate => amountToGenerate;
     public float TimeToGenerate => timeToGenerate;
