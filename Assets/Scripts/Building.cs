@@ -4,13 +4,18 @@ using Unity.VisualScripting;
 using UnityEngine;
 
 public class Building : MonoBehaviour {
+    private Resource resourceToGenerate;
+    private float amountToGenerate;
+    private float timeToGenerate;
+    private float costToBuild;
 
-    private BuildingSO building;
-    private WaitForSeconds timeToGenerate;
+    public Resource ResourceToGenerate => resourceToGenerate;
+    public float AmountToGenerate => amountToGenerate;
+    public float TimeToGenerate => timeToGenerate;
 
     IEnumerator GenerateResources() {
-        yield return new WaitForSeconds(building.TimeToGenerate);
-        building.ResourceToGenerate.AddResource(building.AmountToGenerate);
+        yield return new WaitForSeconds(timeToGenerate);
+        resourceToGenerate.AddResource(amountToGenerate);
     }
 
 }
