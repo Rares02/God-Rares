@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ExagoneCell : MonoBehaviour {
-    private ExagoneCellData cellData = new ExagoneCellData();
+    [SerializeField] private ExagoneCellData cellData;
 
     public ExagoneCellData CellData => cellData;
 

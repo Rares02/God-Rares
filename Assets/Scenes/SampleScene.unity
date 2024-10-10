@@ -1058,7 +1058,7 @@ MonoBehaviour:
   m_Viewport: {fileID: 792005527}
   m_HorizontalScrollbar: {fileID: 333023602}
   m_VerticalScrollbar: {fileID: 0}
-  m_HorizontalScrollbarVisibility: 2
+  m_HorizontalScrollbarVisibility: 1
   m_VerticalScrollbarVisibility: 2
   m_HorizontalScrollbarSpacing: -3
   m_VerticalScrollbarSpacing: -3

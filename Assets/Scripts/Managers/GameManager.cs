@@ -57,23 +57,23 @@ public class GameManager : MonoBehaviour {
     private void AddResourcesToGenerate(Building building) {
         List<int> ints = new List<int>();
         List<int> ints2 = new List<int>();
-        if (GoogleSheet.TryFromStringToListInt(buildingsData[building.name, "money for s"], out ints)) {
+        if (GoogleSheet.TryFromStringToListInt(buildingsData[building.name, Constant.PROPERTIES_MONEY], out ints)) {
             if (ints[building.BuildingLevel] != 0) {
-                if (GoogleSheet.TryFromStringToListInt(buildingsData[building.name, "profit time"], out ints2)) {
+                if (GoogleSheet.TryFromStringToListInt(buildingsData[building.name, Constant.PROPERTIES_TIME], out ints2)) {
                     building.AddResourceToGenerate(ResourceManager.Instance.Money, ints[building.BuildingLevel]);
                 }
             }
         }
-        else if (GoogleSheet.TryFromStringToListInt(buildingsData[building.name, "faith for s"], out ints)) {
+        else if (GoogleSheet.TryFromStringToListInt(buildingsData[building.name, Constant.PROPERTIES_FAITH], out ints)) {
             if (ints[building.BuildingLevel] != 0) {
-                if (GoogleSheet.TryFromStringToListInt(buildingsData[building.name, "profit time"], out ints2)) {
+                if (GoogleSheet.TryFromStringToListInt(buildingsData[building.name, Constant.PROPERTIES_TIME], out ints2)) {
                     building.AddResourceToGenerate(ResourceManager.Instance.Faith, ints[building.BuildingLevel]);
                 }
             }
         }
-        else if (GoogleSheet.TryFromStringToListInt(buildingsData[building.name, "faithful for s"], out ints)) {
+        else if (GoogleSheet.TryFromStringToListInt(buildingsData[building.name, Constant.PROPERTIES_FOLLOWERS], out ints)) {
             if (ints[building.BuildingLevel] != 0) {
-                if (GoogleSheet.TryFromStringToListInt(buildingsData[building.name, "profit time"], out ints2)) {
+                if (GoogleSheet.TryFromStringToListInt(buildingsData[building.name, Constant.PROPERTIES_TIME], out ints2)) {
                     building.AddResourceToGenerate(ResourceManager.Instance.Followers, ints[building.BuildingLevel]);
                 }
             }
@@ -81,17 +81,17 @@ public class GameManager : MonoBehaviour {
     }
     private void AddCosts(Building building) {
         List<int> ints = new List<int>();
-        if (GoogleSheet.TryFromStringToListInt(buildingsData[building.name, "cost money"], out ints)) {
+        if (GoogleSheet.TryFromStringToListInt(buildingsData[building.name, Constant.PROPERTIES_COST_MONEY], out ints)) {
             if (ints[building.BuildingLevel] != 0) {
                 building.CostToBuild.Add(ints[building.BuildingLevel]);
             }
         }
-        else if (GoogleSheet.TryFromStringToListInt(buildingsData[building.name, "cost faith"], out ints)) {
+        else if (GoogleSheet.TryFromStringToListInt(buildingsData[building.name, Constant.PROPERTIES_COST_FAITH], out ints)) {
             if (ints[building.BuildingLevel] != 0) {
                 building.CostToBuild.Add(ints[building.BuildingLevel]);
             }
         }
-        else if (GoogleSheet.TryFromStringToListInt(buildingsData[building.name, "cost faithful"], out ints)) {
+        else if (GoogleSheet.TryFromStringToListInt(buildingsData[building.name, Constant.PROPERTIES_COST_FOLLOWERS], out ints)) {
             if (ints[building.BuildingLevel] != 0) {
                 building.CostToBuild.Add(ints[building.BuildingLevel]);
             }
@@ -99,13 +99,13 @@ public class GameManager : MonoBehaviour {
     }
     private void AddCapacities(Building building) {
         List<int> ints = new List<int>();
-        if (GoogleSheet.TryFromStringToListInt(buildingsData[building.name, "capacity money"], out ints)) {
+        if (GoogleSheet.TryFromStringToListInt(buildingsData[building.name, Constant.PROPERTIES_CAPACITY_MONEY], out ints)) {
             building.ResourcesCapacity.Add(ints[building.BuildingLevel]);
         }
-        else if (GoogleSheet.TryFromStringToListInt(buildingsData[building.name, "capacity faith"], out ints)) {
+        else if (GoogleSheet.TryFromStringToListInt(buildingsData[building.name, Constant.PROPERTIES_CAPACITY_FAITH], out ints)) {
             building.ResourcesCapacity.Add(ints[building.BuildingLevel]);
         }
-        else if (GoogleSheet.TryFromStringToListInt(buildingsData[building.name, "capacity faithful"], out ints)) {
+        else if (GoogleSheet.TryFromStringToListInt(buildingsData[building.name, Constant.PROPERTIES_CAPACITY_FOLLOWERS], out ints)) {
             building.ResourcesCapacity.Add(ints[building.BuildingLevel]);
         }
     }

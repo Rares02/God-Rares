@@ -8,8 +8,8 @@ public class BuildingViewer : MonoBehaviour {
     public BuildingMenuPanel menuPanel;
     public void SetClickUIForBuildingCell(ExagoneCell currentCell) {
         if (currentCell.CellData.CurrentBuilding == null) {
+            infoPanel.OpenPermanentInfo();
             menuPanel.OpenMenu(currentCell);
-            infoPanel.ClosePermanentInfo();
         }
         else {
             menuPanel.CloseMenu();
