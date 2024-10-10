@@ -3,6 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ResourceManager : MonoBehaviour {
+    private static ResourceManager instance;
+    public static ResourceManager Instance {
+        get {
+            instance = FindFirstObjectByType<ResourceManager>();
+            return instance;
+        }
+    }
+
     private List<GameObject> housePrefabs = new List<GameObject>();
     private List<GameObject> templePrefabs = new List<GameObject>();
     private List<GameObject> statuePrefabs = new List<GameObject>();
@@ -16,6 +24,7 @@ public class ResourceManager : MonoBehaviour {
         faith = new Resource(0);
         money = new Resource(0);
         followers = new Resource(0);
+
         StartCoroutine(AddHouseResources());
         StartCoroutine(AddStatueResources());
         StartCoroutine(AddTempleResources());
@@ -26,7 +35,7 @@ public class ResourceManager : MonoBehaviour {
         while (true) {
             yield return new WaitForSeconds(5);
             foreach (GameObject house in housePrefabs) {
-                money.AddResource(house.GetComponent<Building>().AmountToGenerate);
+                //money.AddResource(house.GetComponent<Building>().AmountToGenerate);
             }
         }
     }
@@ -34,7 +43,7 @@ public class ResourceManager : MonoBehaviour {
         while (true) {
             yield return new WaitForSeconds(5);
             foreach (GameObject house in housePrefabs) {
-                money.AddResource(house.GetComponent<Building>().AmountToGenerate);
+                //money.AddResource(house.GetComponent<Building>().AmountToGenerate);
             }
         }
     }
@@ -42,7 +51,7 @@ public class ResourceManager : MonoBehaviour {
         while (true) {
             yield return new WaitForSeconds(5);
             foreach (GameObject house in housePrefabs) {
-                money.AddResource(house.GetComponent<Building>().AmountToGenerate);
+                //money.AddResource(house.GetComponent<Building>().AmountToGenerate);
             }
         }
     }
@@ -50,7 +59,7 @@ public class ResourceManager : MonoBehaviour {
         while (true) {
             yield return new WaitForSeconds(5);
             foreach (GameObject house in housePrefabs) {
-                money.AddResource(house.GetComponent<Building>().AmountToGenerate);
+                //money.AddResource(house.GetComponent<Building>().AmountToGenerate);
             }
         }
     }

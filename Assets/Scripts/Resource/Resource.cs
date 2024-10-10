@@ -4,16 +4,16 @@ using UnityEngine;
 
 public class Resource {
 
-    private float quantity;
+    private int quantity;
 
-    public Resource(float quantity) {
+    public Resource(int quantity) {
         this.quantity = quantity;
     }
 
-    public void AddResource(float quantity) {
+    public void AddResource(int quantity) {
         this.quantity += quantity;
     }
-    public void RemoveQuantity(float quantity) {
+    public void RemoveQuantity(int quantity) {
         this.quantity -= quantity;
     }
 
