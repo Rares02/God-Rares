@@ -36,7 +36,6 @@ public class ResourceManager : MonoBehaviour {
             yield return new WaitForSeconds(5);
             foreach (GameObject house in housePrefabs) {
                 foreach (ResourceToGenerate resourceToGenerate in house.GetComponent<Building>().ResourcesToGenerate) {
-                    
                 }
             }
         }
