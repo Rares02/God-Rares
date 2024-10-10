@@ -2,16 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ResourceToGenerate : MonoBehaviour {
+public class ResourceToGenerate {
     private Resource resource;
     private int quantityToGenerate;
-    private int timeToGenerate;
-    public Resource Resource => resource;
 
-    public ResourceToGenerate(Resource resource, int quantity, int time) {
+    public Resource Resource => resource;
+    public int QuantityToGenerate => quantityToGenerate;
+
+    public ResourceToGenerate(Resource resource, int quantity) {
         this.resource = resource;
         this.quantityToGenerate = quantity;
-        this.timeToGenerate = time;
     }
 
 }

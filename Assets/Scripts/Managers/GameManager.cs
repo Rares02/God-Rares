@@ -21,7 +21,7 @@ public class GameManager : MonoBehaviour {
         SetMarketData();
     }
     private void SetHouseData() {
-        prefab = (GameObject)Resources.Load("Prefabs/House");
+        prefab = (GameObject)Resources.Load(Constant.HOUSE_PREFAB_PATH);
         building = prefab.GetComponent<Building>();
 
         building.BuildingLevel = 1;
@@ -29,7 +29,7 @@ public class GameManager : MonoBehaviour {
         AddCosts(building);
     }
     private void SetTempleData() {
-        prefab = (GameObject)Resources.Load("Prefabs/Temple");
+        prefab = (GameObject)Resources.Load(Constant.TEMPLE_PREFAB_PATH);
         building = prefab.GetComponent<Building>();
 
         building.BuildingLevel = 1;
@@ -37,7 +37,7 @@ public class GameManager : MonoBehaviour {
         AddCosts(building);
     }
     private void SetStatueData() {
-        prefab = (GameObject)Resources.Load("Prefabs/Statue");
+        prefab = (GameObject)Resources.Load(Constant.STATUE_PREFAB_PATH);
         building = prefab.GetComponent<Building>();
 
         building.BuildingLevel = 1;
@@ -45,7 +45,7 @@ public class GameManager : MonoBehaviour {
         AddCosts(building);
     }
     private void SetMarketData() {
-        prefab = (GameObject)Resources.Load("Prefabs/Market");
+        prefab = (GameObject)Resources.Load(Constant.MARKET_PREFAB_PATH);
         building = prefab.GetComponent<Building>();
 
         building.BuildingLevel = 1;
@@ -59,7 +59,19 @@ public class GameManager : MonoBehaviour {
         if (GoogleSheet.TryFromStringToListInt(buildingsData[building.name, "money for s"], out ints)) {
             if (ints[building.BuildingLevel] != 0) {
                 if (GoogleSheet.TryFromStringToListInt(buildingsData[building.name, "profit time"], out ints2)) {
-                    building.AddResourceToGenerate(ResourceManager.Instance.money, ints[building.BuildingLevel], ints2[0]);
+                    building.AddResourceToGenerate(ResourceManager.Instance.Money, ints[building.BuildingLevel]);
+                }
+            }
+        }else if (GoogleSheet.TryFromStringToListInt(buildingsData[building.name, "faith for s"], out ints)) {
+            if (ints[building.BuildingLevel] != 0) {
+                if (GoogleSheet.TryFromStringToListInt(buildingsData[building.name, "profit time"], out ints2)) {
+                    building.AddResourceToGenerate(ResourceManager.Instance.Faith, ints[building.BuildingLevel]);
+                }
+            }
+        }else if (GoogleSheet.TryFromStringToListInt(buildingsData[building.name, "faithful for s"], out ints)) {
+            if (ints[building.BuildingLevel] != 0) {
+                if (GoogleSheet.TryFromStringToListInt(buildingsData[building.name, "profit time"], out ints2)) {
+                    building.AddResourceToGenerate(ResourceManager.Instance.Followers, ints[building.BuildingLevel]);
                 }
             }
         }
