@@ -21,9 +21,9 @@ public class ResourceManager : MonoBehaviour {
     private Resource followers;
 
     private void Start() {
-        faith = new Resource(0);
-        money = new Resource(0);
-        followers = new Resource(0);
+        faith = new Resource("faith", 0);
+        money = new Resource("money", 0);
+        followers = new Resource("followers", 0);
 
         StartCoroutine(AddHouseResources());
         StartCoroutine(AddStatueResources());
@@ -35,7 +35,9 @@ public class ResourceManager : MonoBehaviour {
         while (true) {
             yield return new WaitForSeconds(5);
             foreach (GameObject house in housePrefabs) {
-                //money.AddResource(house.GetComponent<Building>().AmountToGenerate);
+                foreach (ResourceToGenerate resourceToGenerate in house.GetComponent<Building>().ResourcesToGenerate) {
+                    
+                }
             }
         }
     }

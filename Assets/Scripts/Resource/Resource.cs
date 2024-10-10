@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Resource {
-
+    private string name;
     private int quantity;
 
-    public Resource(int quantity) {
+    public Resource(string name, int quantity) {
+        this.name = name;
         this.quantity = quantity;
     }
 
