@@ -4,20 +4,25 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ExagoneCell : MonoBehaviour {
-    private Building currentBuilding;
-    public Building CurrentBuilding => currentBuilding; 
+    private ExagoneCellData cellData = new ExagoneCellData();
+
+    public ExagoneCellData CellData => cellData;
+
     public BuildingViewer buildingViewer;
 
     public void OnClick() {
         buildingViewer.SetClickUIForBuildingCell(this);
     }
     public void OnSelect() {
-        HighLightCell();
+        HighlightCell();
         buildingViewer.SetSelectUIForBuildingCell(this);
+    }
+    public void OnDeselect() {
+        DehighlightCell();
     }
 
     public void SetNewBuilding(Building building) {
-        currentBuilding = building;
+        cellData.SetBuilding(building);
         UpdateBuildingPrefab(building.gameObject);
     }
 
@@ -28,8 +33,11 @@ public class ExagoneCell : MonoBehaviour {
         Instantiate(prefab, transform);
     }
 
-    private void HighLightCell() {
+    private void HighlightCell() {
         
+    }
+    private void DehighlightCell() {
+
     }
 }
 

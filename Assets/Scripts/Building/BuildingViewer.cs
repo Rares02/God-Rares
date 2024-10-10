@@ -7,7 +7,7 @@ public class BuildingViewer : MonoBehaviour {
     public BuildingInfoPanel infoPanel;
     public BuildingMenuPanel menuPanel;
     public void SetClickUIForBuildingCell(ExagoneCell currentCell) {
-        if (currentCell.CurrentBuilding == null) {
+        if (currentCell.CellData.CurrentBuilding == null) {
             menuPanel.OpenMenu(currentCell);
             infoPanel.ClosePermanentInfo();
         }
@@ -17,12 +17,9 @@ public class BuildingViewer : MonoBehaviour {
         }
     }
     public void SetSelectUIForBuildingCell(ExagoneCell currentCell) {
-        if (currentCell.CurrentBuilding == null) {
-            infoPanel.CloseTemporaryInfo();
-        }
-        else {
-            infoPanel.OpenTemporaryInfo();
-        }
+
+        infoPanel.OpenTemporaryInfo(currentCell);
+        
     }
     public void CloseAllPanels() {
         infoPanel.ClosePermanentInfo();

@@ -12,7 +12,8 @@ public class BuildingInfoPanel : BuildingPanel {
         gameObject.SetActive(true);
         SetPermanent();
     }
-    public void OpenTemporaryInfo() {
+    public void OpenTemporaryInfo(ExagoneCell exagoneCell) {
+        SetupInfo(exagoneCell);
         if(!permanent) gameObject.SetActive(true);
     }
     public void CloseTemporaryInfo() {
@@ -23,5 +24,10 @@ public class BuildingInfoPanel : BuildingPanel {
     public void ClosePermanentInfo() {
         gameObject.SetActive(false);
         SetTemporary();
+    }
+    private void SetupInfo(ExagoneCell exagoneCell) {
+        if (exagoneCell.CellData.CurrentBuilding == null) {
+            //empty
+        }
     }
 }

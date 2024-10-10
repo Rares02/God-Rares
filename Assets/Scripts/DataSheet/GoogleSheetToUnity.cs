@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 
-namespace GoogleSheet {
-    public class GoogleSheetToUnity{
+namespace GoogleSheetLib {
+    public class GoogleSheetToUnity {
 
         /// <summary>
         /// Set this as callback: result => { googleSheet = result; }
@@ -112,7 +112,7 @@ namespace GoogleSheet {
             }
         }
 
-        public static List<string> FromStringToList(string s) {
+        public static List<string> FromStringToListString(string s) {
 
             List<string> list = new List<string>();
             string temporary = "";
@@ -127,6 +127,38 @@ namespace GoogleSheet {
             }
             list.Add(temporary);
             return list;
+        }
+        public static bool TryFromStringToListInt(string s, out List<int> intList) {
+            intList = new List<int>();
+            string temporary = "";
+            foreach (char c in s) {
+                if (c == ',') {
+                    if (int.TryParse(temporary, out int outInt)) {
+                        intList.Add(outInt);
+                    }
+                    else if (temporary == "") {
+                        intList.Add(0);
+                    }
+                    else {
+                        return false;
+                    }
+                    temporary = "";
+                }
+                else if (c != ' ') {
+                    temporary += c;
+                }
+            }
+
+            if (int.TryParse(temporary, out int i)) {
+                intList.Add(i);
+            }
+            else if (temporary == "") {
+                intList.Add(0);
+            }
+            else {
+                return false;
+            }
+            return true;
         }
     }
 }

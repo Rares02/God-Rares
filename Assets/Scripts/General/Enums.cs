@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BuildingMenuButton : GenericButton
+public enum TerrainType
 {
-
+    Plain = 0,
 }
