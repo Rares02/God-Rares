@@ -5,7 +5,9 @@ using UnityEngine;
 public class Resource {
     private string name;
     private int quantity;
+    private int max;
     public string Name => name; 
+    public int Max {  get { return quantity; } set { quantity = value; } }
 
     public Resource(string name, int quantity) {
         this.name = name;

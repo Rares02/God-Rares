@@ -12,10 +12,15 @@ public class ResourceManager : MonoBehaviour {
         }
     }
 
-    private List<GameObject> housePrefabs = new List<GameObject>();
-    private List<GameObject> templePrefabs = new List<GameObject>();
-    private List<GameObject> statuePrefabs = new List<GameObject>();
-    private List<GameObject> marketPrefabs = new List<GameObject>();
+    private List<Building> houseList = new List<Building>();
+    private List<Building> templeList = new List<Building>();
+    private List<Building> statueList = new List<Building>();
+    private List<Building> marketList = new List<Building>();
+
+    public List<Building> HouseList {  get { return houseList; } }
+    public List<Building> TempleList { get { return templeList; } }
+    public List<Building> StatueList { get { return statueList; } }
+    public List<Building> MarketList { get { return marketList; } }
 
     private Resource faith;
     private Resource money;
@@ -37,10 +42,10 @@ public class ResourceManager : MonoBehaviour {
     }
 
     private IEnumerator AddHouseResources() {
-        while (true) {
-            yield return new WaitForSeconds(housePrefabs[0].GetComponent<Building>().TimeToGenerate);
-            foreach (GameObject house in housePrefabs) {
-                foreach (ResourceToGenerate resourceToGenerate in house.GetComponent<Building>().ResourcesToGenerate) {
+        while (true && houseList.Count > 0) {
+            yield return new WaitForSeconds(houseList[0].TimeToGenerate);
+            foreach (Building house in houseList) {
+                foreach (ResourceToGenerate resourceToGenerate in house.ResourcesToGenerate) {
                     AddResource(resourceToGenerate);
                 }
             }
@@ -48,30 +53,30 @@ public class ResourceManager : MonoBehaviour {
     }
 
     private IEnumerator AddStatueResources() {
-        while (true) {
-            yield return new WaitForSeconds(statuePrefabs[0].GetComponent<Building>().TimeToGenerate);
-            foreach (GameObject statue in statuePrefabs) {
-                foreach (ResourceToGenerate resourceToGenerate in statue.GetComponent<Building>().ResourcesToGenerate) {
+        while (true && statueList.Count > 0) {
+            yield return new WaitForSeconds(statueList[0].TimeToGenerate);
+            foreach (Building statue in statueList) {
+                foreach (ResourceToGenerate resourceToGenerate in statue.ResourcesToGenerate) {
                     AddResource(resourceToGenerate);
                 }
             }
         }
     }
     private IEnumerator AddTempleResources() {
-        while (true) {
-            yield return new WaitForSeconds(templePrefabs[0].GetComponent<Building>().TimeToGenerate);
-            foreach (GameObject temple in templePrefabs) {
-                foreach (ResourceToGenerate resourceToGenerate in temple.GetComponent<Building>().ResourcesToGenerate) {
+        while (true && templeList.Count > 0) {
+            yield return new WaitForSeconds(templeList[0].TimeToGenerate);
+            foreach (Building temple in templeList) {
+                foreach (ResourceToGenerate resourceToGenerate in temple.ResourcesToGenerate) {
                     AddResource(resourceToGenerate);
                 }
             }
         }
     }
     private IEnumerator AddMarketResources() {
-        while (true) {
-            yield return new WaitForSeconds(marketPrefabs[0].GetComponent<Building>().TimeToGenerate);
-            foreach (GameObject market in marketPrefabs) {
-                foreach (ResourceToGenerate resourceToGenerate in market.GetComponent<Building>().ResourcesToGenerate) {
+        while (true && marketList.Count > 0) {
+            yield return new WaitForSeconds(marketList[0].TimeToGenerate);
+            foreach (Building market in marketList) {
+                foreach (ResourceToGenerate resourceToGenerate in market.ResourcesToGenerate) {
                     AddResource(resourceToGenerate);
                 }
             }
