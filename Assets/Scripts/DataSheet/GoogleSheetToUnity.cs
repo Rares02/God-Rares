@@ -140,6 +140,7 @@ namespace GoogleSheetLib {
                         intList.Add(0);
                     }
                     else {
+                        intList = null;
                         return false;
                     }
                     temporary = "";
@@ -156,6 +157,7 @@ namespace GoogleSheetLib {
                 intList.Add(0);
             }
             else {
+                intList = null;
                 return false;
             }
             return true;
