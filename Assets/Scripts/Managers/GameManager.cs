@@ -35,44 +35,47 @@ public class GameManager : MonoBehaviour {
         List<int> ints2 = new List<int>();
         if (GoogleSheet.TryFromStringToListInt(buildingsData[building.name, Constant.PROPERTIES_MONEY], out ints)) {
             if (GoogleSheet.TryFromStringToListInt(buildingsData[building.name, Constant.PROPERTIES_TIME], out ints2)) {
-                building.AddResourceToGenerate(ResourceManager.Instance.Money, ints[building.BuildingLevel]);
+                building.AddResourceToGenerate(ResourceManager.Instance.Money, ints[building.BuildingLevel - 1]);
+                building.TimeToGenerate = ints2[building.BuildingLevel - 1];
             }
         }
         if (GoogleSheet.TryFromStringToListInt(buildingsData[building.name, Constant.PROPERTIES_FAITH], out ints)) {
             if (GoogleSheet.TryFromStringToListInt(buildingsData[building.name, Constant.PROPERTIES_TIME], out ints2)) {
-                building.AddResourceToGenerate(ResourceManager.Instance.Faith, ints[building.BuildingLevel]);
+                building.AddResourceToGenerate(ResourceManager.Instance.Faith, ints[building.BuildingLevel - 1]);
+                building.TimeToGenerate = ints2[building.BuildingLevel - 1];
             }
         }
         if (GoogleSheet.TryFromStringToListInt(buildingsData[building.name, Constant.PROPERTIES_FOLLOWERS], out ints)) {
             if (GoogleSheet.TryFromStringToListInt(buildingsData[building.name, Constant.PROPERTIES_TIME], out ints2)) {
-                building.AddResourceToGenerate(ResourceManager.Instance.Followers, ints[building.BuildingLevel]);
+                building.AddResourceToGenerate(ResourceManager.Instance.Followers, ints[building.BuildingLevel - 1]);
+                building.TimeToGenerate = ints2[building.BuildingLevel - 1];
             }
         }
     }
     private void AddCosts(Building building) {
         List<int> ints = new List<int>();
         if (GoogleSheet.TryFromStringToListInt(buildingsData[building.name, Constant.PROPERTIES_COST_MONEY], out ints)) {
-            building.CostToBuild.Add(Constant.PROPERTIES_COST_MONEY, ints[building.BuildingLevel]);
+            building.CostToBuild.Add(Constant.PROPERTIES_COST_MONEY, ints[building.BuildingLevel - 1]);
         }
 
         if (GoogleSheet.TryFromStringToListInt(buildingsData[building.name, Constant.PROPERTIES_COST_FAITH], out ints)) {
-            building.CostToBuild.Add(Constant.PROPERTIES_COST_FAITH, ints[building.BuildingLevel]);
+            building.CostToBuild.Add(Constant.PROPERTIES_COST_FAITH, ints[building.BuildingLevel - 1]);
         }
 
         if (GoogleSheet.TryFromStringToListInt(buildingsData[building.name, Constant.PROPERTIES_COST_FOLLOWERS], out ints)) {
-            building.CostToBuild.Add(Constant.PROPERTIES_COST_FOLLOWERS, ints[building.BuildingLevel]);
+            building.CostToBuild.Add(Constant.PROPERTIES_COST_FOLLOWERS, ints[building.BuildingLevel - 1]);
         }
     }
     private void AddCapacities(Building building) {
         List<int> ints = new List<int>();
         if (GoogleSheet.TryFromStringToListInt(buildingsData[building.name, Constant.PROPERTIES_CAPACITY_MONEY], out ints)) {
-            building.ResourcesCapacity.Add(Constant.PROPERTIES_CAPACITY_MONEY, ints[building.BuildingLevel]);
+            building.ResourcesCapacity.Add(Constant.PROPERTIES_CAPACITY_MONEY, ints[building.BuildingLevel - 1]);
         }
         if (GoogleSheet.TryFromStringToListInt(buildingsData[building.name, Constant.PROPERTIES_CAPACITY_FAITH], out ints)) {
-            building.ResourcesCapacity.Add(Constant.PROPERTIES_CAPACITY_FAITH, ints[building.BuildingLevel]);
+            building.ResourcesCapacity.Add(Constant.PROPERTIES_CAPACITY_FAITH, ints[building.BuildingLevel - 1]);
         }
         if (GoogleSheet.TryFromStringToListInt(buildingsData[building.name, Constant.PROPERTIES_CAPACITY_FOLLOWERS], out ints)) {
-            building.ResourcesCapacity.Add(Constant.PROPERTIES_CAPACITY_FOLLOWERS, ints[building.BuildingLevel]);
+            building.ResourcesCapacity.Add(Constant.PROPERTIES_CAPACITY_FOLLOWERS, ints[building.BuildingLevel - 1]);
         }
     }
 }

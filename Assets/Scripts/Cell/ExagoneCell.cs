@@ -30,8 +30,26 @@ public class ExagoneCell : MonoBehaviour {
         if(transform.childCount != 0) {
             Destroy(transform.GetChild(0).gameObject);
         }
-        GameObject temp = Instantiate(prefab, transform);
-        temp.name = prefab.name;
+        GameObject prefabTemp = Instantiate(prefab, transform);
+        prefabTemp.name = prefab.name;
+        Building buildingTemp = prefabTemp.GetComponent<Building>();
+
+        switch (buildingTemp.name.ToLower()) {
+            case "house":
+                ResourceManager.Instance.HouseList.Add(buildingTemp);
+                break;
+            case "statue":
+                ResourceManager.Instance.StatueList.Add(buildingTemp);
+                break;
+            case "temple":
+                ResourceManager.Instance.TempleList.Add(buildingTemp);
+                break;
+            case "market":
+                ResourceManager.Instance.MarketList.Add(buildingTemp);
+                break;
+            default:
+                break;
+        }
     }
 
     private void HighlightCell() {

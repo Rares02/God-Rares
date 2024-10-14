@@ -7,8 +7,8 @@ public class Resource {
     private int quantity;
     private int max;
     public string Name => name; 
-    public int Max {  get { return quantity; } set { quantity = value; } }
-
+    public int Quantity => quantity;
+    public int Max {  get { return max; } set { max = value; } }
     public Resource(string name, int quantity) {
         this.name = name;
         this.quantity = quantity;

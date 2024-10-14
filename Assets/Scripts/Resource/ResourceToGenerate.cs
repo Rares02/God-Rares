@@ -11,7 +11,7 @@ public class ResourceToGenerate {
 
     public ResourceToGenerate(Resource resource, int quantity) {
         this.resource = resource;
-        this.quantityToGenerate = quantity;
+        quantityToGenerate = quantity;
     }
 
 }
