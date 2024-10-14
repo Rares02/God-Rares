@@ -15,10 +15,10 @@ public class Resource {
     }
 
     public void AddResource(int quantity) {
-        this.quantity += quantity;
+        this.quantity = Mathf.Clamp(this.quantity + quantity, 0, Max);
     }
     public void RemoveQuantity(int quantity) {
-        this.quantity -= quantity;
+        this.quantity = Mathf.Clamp(this.quantity - quantity, 0, Max);
     }
 
 }
