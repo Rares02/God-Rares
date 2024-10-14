@@ -30,7 +30,8 @@ public class ExagoneCell : MonoBehaviour {
         if(transform.childCount != 0) {
             Destroy(transform.GetChild(0).gameObject);
         }
-        Instantiate(prefab, transform);
+        GameObject temp = Instantiate(prefab, transform);
+        temp.name = prefab.name;
     }
 
     private void HighlightCell() {

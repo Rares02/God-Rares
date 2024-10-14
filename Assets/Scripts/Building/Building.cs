@@ -5,11 +5,11 @@ using UnityEngine;
 
 public class Building : MonoBehaviour {
     //ORDINE DI RISORSE PER IL COSTO: MONEY, FAITH, FOLLOWERS
-    private Dictionary<string, int> costToBuild;    
+    private Dictionary<string, int> costToBuild = new Dictionary<string, int>();    
     private int buildingLevel;
-    private List<ResourceToGenerate> resourcesToGenerate;
+    private List<ResourceToGenerate> resourcesToGenerate = new List<ResourceToGenerate>();
     private int timeToGenerate;
-    private Dictionary<string, int> resourcesCapacity;
+    private Dictionary<string, int> resourcesCapacity = new Dictionary<string, int>();
 
     public Dictionary<string, int> CostToBuild { get { return costToBuild; } set { costToBuild = value; } }
     public int BuildingLevel { get { return buildingLevel; } set { buildingLevel = value; } }
@@ -23,6 +23,7 @@ public class Building : MonoBehaviour {
     }
 
     private void Start() {
+        GameManager.Instance.SetBuildingData(this);
         ResourceManager.Instance.Money.Max += resourcesCapacity[Constant.PROPERTIES_CAPACITY_MONEY];
         ResourceManager.Instance.Faith.Max += resourcesCapacity[Constant.PROPERTIES_CAPACITY_FAITH];
         ResourceManager.Instance.Followers.Max += resourcesCapacity[Constant.PROPERTIES_CAPACITY_FOLLOWERS];

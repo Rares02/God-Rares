@@ -47,6 +47,10 @@ public class ResourceManager : MonoBehaviour {
             foreach (Building house in houseList) {
                 foreach (ResourceToGenerate resourceToGenerate in house.ResourcesToGenerate) {
                     AddResource(resourceToGenerate);
+                    Debug.Log("UPDATED RESOURCES BY HOUSES: \n" +
+                        "money: " + money + "\n" +
+                        "faith: " + faith + "\n" +
+                        "followers: " + followers + "\n");
                 }
             }
         }
@@ -58,6 +62,10 @@ public class ResourceManager : MonoBehaviour {
             foreach (Building statue in statueList) {
                 foreach (ResourceToGenerate resourceToGenerate in statue.ResourcesToGenerate) {
                     AddResource(resourceToGenerate);
+                    Debug.Log("UPDATED RESOURCES BY STATUES: \n" +
+                        "money: " + money + "\n" +
+                        "faith: " + faith + "\n" +
+                        "followers: " + followers + "\n");
                 }
             }
         }
@@ -68,6 +76,10 @@ public class ResourceManager : MonoBehaviour {
             foreach (Building temple in templeList) {
                 foreach (ResourceToGenerate resourceToGenerate in temple.ResourcesToGenerate) {
                     AddResource(resourceToGenerate);
+                    Debug.Log("UPDATED RESOURCES BY TEMPLES: \n" +
+                        "money: " + money + "\n" +
+                        "faith: " + faith + "\n" +
+                        "followers: " + followers + "\n");
                 }
             }
         }
@@ -78,6 +90,10 @@ public class ResourceManager : MonoBehaviour {
             foreach (Building market in marketList) {
                 foreach (ResourceToGenerate resourceToGenerate in market.ResourcesToGenerate) {
                     AddResource(resourceToGenerate);
+                    Debug.Log("UPDATED RESOURCES BY MARKETS: \n" +
+                        "money: " + money + "\n" +
+                        "faith: " + faith + "\n" +
+                        "followers: " + followers + "\n");
                 }
             }
         }

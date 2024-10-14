@@ -31,11 +31,11 @@ public class BuildingInfoPanel : BuildingPanel {
         SetTemporary();
     }
     private void SetupInfo(ExagoneCell exagoneCell) {
-        cellType.text = UIText.INFO_PANEL_CELL_EMPTY;
-        terrainType.text = exagoneCell.CellData.TerrainType.ToString();
-        if (exagoneCell.CellData.CurrentBuilding != null) {
-            cellType.text = exagoneCell.CellData.CurrentBuilding.name;
-            buildingInfoParameters.SetupInfo(exagoneCell.CellData);
-        }
+        //cellType.text = UIText.INFO_PANEL_CELL_EMPTY;
+        //terrainType.text = exagoneCell.CellData.TerrainType.ToString();
+        //if (exagoneCell.CellData.CurrentBuilding != null) {
+        //    cellType.text = exagoneCell.CellData.CurrentBuilding.name;
+        //    buildingInfoParameters.SetupInfo(exagoneCell.CellData);
+        //}
     }
 }
