@@ -4,7 +4,8 @@ using UnityEngine;
 
 public static class UIText
 {
-    public static readonly string INFO_PANEL_CELL_EMPTY = "Empty"; 
+    public static readonly string INFO_PANEL_CELL_EMPTY = "Empty";
+    public static readonly string INFO_PANEL_LEVEL = "Level";
     public static readonly string INFO_PANEL_MONEY = "Money";
     public static readonly string INFO_PANEL_FAITH = "Faith";
     public static readonly string INFO_PANEL_FOLLOWERS = "Followers";

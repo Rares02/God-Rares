@@ -83,30 +83,30 @@ public class GameManager : MonoBehaviour {
         List<int> ints = new List<int>();
         if (GoogleSheet.TryFromStringToListInt(buildingsData[building.name, Constant.PROPERTIES_COST_MONEY], out ints)) {
             if (ints[building.BuildingLevel] != 0) {
-                building.CostToBuild.Add(ints[building.BuildingLevel]);
+                building.CostToBuild.Add(Constant.PROPERTIES_COST_MONEY, ints[building.BuildingLevel]);
             }
         }
         else if (GoogleSheet.TryFromStringToListInt(buildingsData[building.name, Constant.PROPERTIES_COST_FAITH], out ints)) {
             if (ints[building.BuildingLevel] != 0) {
-                building.CostToBuild.Add(ints[building.BuildingLevel]);
+                building.CostToBuild.Add(Constant.PROPERTIES_COST_FAITH, ints[building.BuildingLevel]);
             }
         }
         else if (GoogleSheet.TryFromStringToListInt(buildingsData[building.name, Constant.PROPERTIES_COST_FOLLOWERS], out ints)) {
             if (ints[building.BuildingLevel] != 0) {
-                building.CostToBuild.Add(ints[building.BuildingLevel]);
+                building.CostToBuild.Add(Constant.PROPERTIES_COST_FOLLOWERS, ints[building.BuildingLevel]);
             }
         }
     }
     private void AddCapacities(Building building) {
         List<int> ints = new List<int>();
         if (GoogleSheet.TryFromStringToListInt(buildingsData[building.name, Constant.PROPERTIES_CAPACITY_MONEY], out ints)) {
-            building.ResourcesCapacity.Add(ints[building.BuildingLevel]);
+            building.ResourcesCapacity.Add(Constant.PROPERTIES_CAPACITY_MONEY, ints[building.BuildingLevel]);
         }
         else if (GoogleSheet.TryFromStringToListInt(buildingsData[building.name, Constant.PROPERTIES_CAPACITY_FAITH], out ints)) {
-            building.ResourcesCapacity.Add(ints[building.BuildingLevel]);
+            building.ResourcesCapacity.Add(Constant.PROPERTIES_CAPACITY_FAITH, ints[building.BuildingLevel]);
         }
         else if (GoogleSheet.TryFromStringToListInt(buildingsData[building.name, Constant.PROPERTIES_CAPACITY_FOLLOWERS], out ints)) {
-            building.ResourcesCapacity.Add(ints[building.BuildingLevel]);
+            building.ResourcesCapacity.Add(Constant.PROPERTIES_CAPACITY_FOLLOWERS, ints[building.BuildingLevel]);
         }
     }
 }
