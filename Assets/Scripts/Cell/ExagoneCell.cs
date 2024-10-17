@@ -21,33 +21,33 @@ public class ExagoneCell : MonoBehaviour {
         DehighlightCell();
     }
 
-    public void SetNewBuilding(Building building) {
+    public void SetNewBuilding(BuildingSO building) {
         cellData.SetBuilding(building);
-        UpdateBuildingPrefab(building.gameObject);
+        buildingViewer.UpdateInfoPanel();
+        UpdateBuildingPrefab(building);
     }
 
-    private void UpdateBuildingPrefab(GameObject prefab) {
+    private void UpdateBuildingPrefab(BuildingSO building) {
         if(transform.childCount != 0) {
             Destroy(transform.GetChild(0).gameObject);
         }
-        GameObject prefabTemp = Instantiate(prefab, transform);
-        prefabTemp.name = prefab.name;
-        Building buildingTemp = prefabTemp.GetComponent<Building>();
 
-        switch (buildingTemp.name.ToLower()) {
-            case "house":
-                ResourceManager.Instance.HouseList.Add(buildingTemp);
+
+
+        GameObject prefabTemp = Instantiate(building.Model, transform);
+
+        switch (building.name.ToLower()) {
+            case Constant.PROPERTIES_HOUSE_NAME:
+                ResourceManager.Instance.HouseList.Add(building);
                 break;
-            case "statue":
-                ResourceManager.Instance.StatueList.Add(buildingTemp);
+            case Constant.PROPERTIES_STATUE_NAME:
+                ResourceManager.Instance.StatueList.Add(building);
                 break;
-            case "temple":
-                ResourceManager.Instance.TempleList.Add(buildingTemp);
+            case Constant.PROPERTIES_TEMPLE_NAME:
+                ResourceManager.Instance.TempleList.Add(building);
                 break;
-            case "market":
-                ResourceManager.Instance.MarketList.Add(buildingTemp);
-                break;
-            default:
+            case Constant.PROPERTIES_MARKET_NAME:
+                ResourceManager.Instance.MarketList.Add(building);
                 break;
         }
     }

@@ -8,6 +8,14 @@ public static class Constant {
     public static readonly string STATUE_PREFAB_PATH = "Prefabs/Statue";
     public static readonly string MARKET_PREFAB_PATH = "Prefabs/Market";
 
+    public static readonly string UI_TEXT_PREFAB_PATH = "UI/Generic/Market";
+    public static readonly string UI_BUTTON_PREFAB_PATH = "UI/Generic/Market";
+
+    public const string PROPERTIES_HOUSE_NAME = "house";
+    public const string PROPERTIES_STATUE_NAME = "statue";
+    public const string PROPERTIES_TEMPLE_NAME = "temple";
+    public const string PROPERTIES_MARKET_NAME = "market";
+
     public const string PROPERTIES_MONEY = "money for s";
     public const string PROPERTIES_FAITH = "faith for s";
     public const string PROPERTIES_FOLLOWERS = "follower for s";

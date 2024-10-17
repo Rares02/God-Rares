@@ -3,6 +3,7 @@ using TMPro;
 using UnityEngine;
 
 public class BuildingInfoPanel : BuildingPanel {
+    private ExagoneCellData lastInfo = new ExagoneCellData();
     [SerializeField] private TextMeshProUGUI cellType;
     [SerializeField] private TextMeshProUGUI terrainType;
     [SerializeField] private BuildingInfoParameters buildingInfoParameters;
@@ -13,13 +14,16 @@ public class BuildingInfoPanel : BuildingPanel {
     public void SetTemporary() {
         permanent = false;
     }
-    public void OpenPermanentInfo() {
+    public void OpenPermanentInfo(ExagoneCell exagoneCell) {
+        SetupInfo(exagoneCell.CellData);
         gameObject.SetActive(true);
         SetPermanent();
     }
-    public void OpenTemporaryInfo(ExagoneCell exagoneCell) {
-        SetupInfo(exagoneCell);
-        if(!permanent) gameObject.SetActive(true);
+    public void OpenTemporaryInfo(ExagoneCell exagoneCell) {        
+        if (!permanent) {
+            SetupInfo(exagoneCell.CellData);
+            gameObject.SetActive(true);
+        }
     }
     public void CloseTemporaryInfo() {
         if (!permanent) {
@@ -30,12 +34,36 @@ public class BuildingInfoPanel : BuildingPanel {
         gameObject.SetActive(false);
         SetTemporary();
     }
-    private void SetupInfo(ExagoneCell exagoneCell) {
-        //cellType.text = UIText.INFO_PANEL_CELL_EMPTY;
-        //terrainType.text = exagoneCell.CellData.TerrainType.ToString();
-        //if (exagoneCell.CellData.CurrentBuilding != null) {
-        //    cellType.text = exagoneCell.CellData.CurrentBuilding.name;
-        //    buildingInfoParameters.SetupInfo(exagoneCell.CellData);
-        //}
+    public void SetupInfo(ExagoneCellData exagoneCellData) {
+        if (terrainType.text != exagoneCellData.TerrainType.ToString()) {
+            terrainType.text = exagoneCellData.TerrainType.ToString();
+        }
+        if (exagoneCellData.CurrentBuilding == null && lastInfo.CurrentBuilding == null) {
+            lastInfo = exagoneCellData;
+            return;
+        }
+        if (exagoneCellData.CurrentBuilding == null) {            
+            cellType.text = UIText.INFO_PANEL_CELL_EMPTY;
+            buildingInfoParameters.SetupEmptyInfo();
+        }
+        else {
+            if(lastInfo.CurrentBuilding != null) {
+                if (exagoneCellData.CurrentBuilding.name == lastInfo.CurrentBuilding.name &&
+                exagoneCellData.CurrentBuilding.Level == lastInfo.CurrentBuilding.Level) {
+                    return;
+                }
+            }            
+            cellType.text = exagoneCellData.CurrentBuilding.name;
+            buildingInfoParameters.SetupInfo(exagoneCellData);
+        }
+        lastInfo = exagoneCellData;
+    }
+
+    public void UpdateCurrentInfo() {
+        if (terrainType.text != lastInfo.TerrainType.ToString()) {
+            terrainType.text = lastInfo.TerrainType.ToString();
+        }
+        cellType.text = lastInfo.CurrentBuilding.name;
+        buildingInfoParameters.SetupInfo(lastInfo);
     }
 }

@@ -42,7 +42,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6417003616956955539}
-  m_Mesh: {fileID: 2534964839176971238, guid: 90ca7523222d0924f89d3303e34062ef, type: 3}
+  m_Mesh: {fileID: 2534964839176971238, guid: 24aecfbf6be45b448b6148ed29d68842, type: 3}
 --- !u!23 &6277377141313641904
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -106,7 +106,7 @@ MeshCollider:
   serializedVersion: 5
   m_Convex: 0
   m_CookingOptions: 30
-  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 2534964839176971238, guid: 24aecfbf6be45b448b6148ed29d68842, type: 3}
 --- !u!114 &4229380442772572257
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -120,7 +120,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cellData:
-    building: {fileID: 6323131585515666728, guid: a2f1807824f550c4d889a3d869e2ca05, type: 3}
+    building: {fileID: 0}
     terrainType: 0
     isRemovable: 1
   buildingViewer: {fileID: 0}

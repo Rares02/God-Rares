@@ -6,10 +6,8 @@ public class BuildingMenuPanel : BuildingPanel {
     private ExagoneCell currentCell;
     [SerializeField] private BuildingMenuButton button;
     [SerializeField] private GameObject content;
-
-    [SerializeField] private Building[] buildings;
     public void BuyBuilding(int index) {
-        currentCell.SetNewBuilding(buildings[index]);
+        currentCell.SetNewBuilding(GameManager.Instance.Buildings[index]);
         CloseMenu();
     }
     public void OpenMenu(ExagoneCell exagoneCell) {
@@ -22,7 +20,7 @@ public class BuildingMenuPanel : BuildingPanel {
     }
     private void GenerateButtonList() {
         ClearButtons();
-        for (int i = 0; i < buildings.Length; i++){
+        for (int i = 0; i < GameManager.Instance.Buildings.Length; i++){
             BuildingMenuButton newButton = Instantiate(button, content.transform);
             int index = i;
             newButton.OnClick_Get.AddListener(() => { BuyBuilding(index); });

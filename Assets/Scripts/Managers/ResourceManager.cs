@@ -12,15 +12,15 @@ public class ResourceManager : MonoBehaviour {
         }
     }
 
-    private List<Building> houseList = new List<Building>();
-    private List<Building> templeList = new List<Building>();
-    private List<Building> statueList = new List<Building>();
-    private List<Building> marketList = new List<Building>();
+    private List<BuildingSO> houseList = new List<BuildingSO>();
+    private List<BuildingSO> templeList = new List<BuildingSO>();
+    private List<BuildingSO> statueList = new List<BuildingSO>();
+    private List<BuildingSO> marketList = new List<BuildingSO>();
 
-    public List<Building> HouseList { get { return houseList; } }
-    public List<Building> TempleList { get { return templeList; } }
-    public List<Building> StatueList { get { return statueList; } }
-    public List<Building> MarketList { get { return marketList; } }
+    public List<BuildingSO> HouseList { get { return houseList; } }
+    public List<BuildingSO> TempleList { get { return templeList; } }
+    public List<BuildingSO> StatueList { get { return statueList; } }
+    public List<BuildingSO> MarketList { get { return marketList; } }
 
     private Resource faith;
     private Resource money;
@@ -52,19 +52,9 @@ public class ResourceManager : MonoBehaviour {
                 yield return new WaitForFixedUpdate();
             }
             else {
-                yield return new WaitForSeconds(houseList[0].TimeToGenerate);
-                foreach (Building house in houseList) {
-                    foreach (ResourceToGenerate resourceToGenerate in house.ResourcesToGenerate) {
-                        AddResource(resourceToGenerate);
-                        Debug.Log("UPDATED RESOURCES BY HOUSES: \n" +
-                            "money: " + money.Quantity + "\n" +
-                            "faith: " + faith.Quantity + "\n" +
-                            "followers: " + followers.Quantity + "\n" +
-                            "MAX RESOURCES: \n" +
-                            "money: " + money.Max + "\n" +
-                            "faith: " + faith.Max + "\n" +
-                            "followers: " + followers.Max + "\n");
-                    }
+                yield return new WaitForSeconds(houseList[0].Time);
+                foreach (BuildingSO house in houseList) {
+                    AddResources(house);                    
                 }
             }
         }
@@ -76,19 +66,9 @@ public class ResourceManager : MonoBehaviour {
                 yield return new WaitForFixedUpdate();
             }
             else {
-                yield return new WaitForSeconds(statueList[0].TimeToGenerate);
-                foreach (Building statue in statueList) {
-                    foreach (ResourceToGenerate resourceToGenerate in statue.ResourcesToGenerate) {
-                        AddResource(resourceToGenerate);
-                        Debug.Log("UPDATED RESOURCES BY STATUES: \n" +
-                            "money: " + money.Quantity + "\n" +
-                            "faith: " + faith.Quantity + "\n" +
-                            "followers: " + followers.Quantity + "\n" +
-                            "MAX RESOURCES: \n" +
-                            "money: " + money.Max + "\n" +
-                            "faith: " + faith.Max + "\n" +
-                            "followers: " + followers.Max + "\n");
-                    }
+                yield return new WaitForSeconds(statueList[0].Time);
+                foreach (BuildingSO statue in statueList) {
+                    AddResources(statue);
                 }
             }
         }
@@ -99,19 +79,9 @@ public class ResourceManager : MonoBehaviour {
                 yield return new WaitForFixedUpdate();
             }
             else {
-                yield return new WaitForSeconds(templeList[0].TimeToGenerate);
-                foreach (Building temple in templeList) {
-                    foreach (ResourceToGenerate resourceToGenerate in temple.ResourcesToGenerate) {
-                        AddResource(resourceToGenerate);
-                        Debug.Log("UPDATED RESOURCES BY TEMPLES: \n" +
-                            "money: " + money.Quantity + "\n" +
-                            "faith: " + faith.Quantity + "\n" +
-                            "followers: " + followers.Quantity + "\n" +
-                            "MAX RESOURCES: \n" +
-                            "money: " + money.Max + "\n" +
-                            "faith: " + faith.Max + "\n" +
-                            "followers: " + followers.Max + "\n");
-                    }
+                yield return new WaitForSeconds(templeList[0].Time);
+                foreach (BuildingSO temple in templeList) {
+                    AddResources(temple);
                 }
             }
         }
@@ -122,33 +92,17 @@ public class ResourceManager : MonoBehaviour {
                 yield return new WaitForFixedUpdate();
             }
             else {
-                yield return new WaitForSeconds(marketList[0].TimeToGenerate);
-                foreach (Building market in marketList) {
-                    foreach (ResourceToGenerate resourceToGenerate in market.ResourcesToGenerate) {
-                        AddResource(resourceToGenerate);
-                        Debug.Log("UPDATED RESOURCES BY MARKETS: \n" +
-                            "money: " + money.Quantity + "\n" +
-                            "faith: " + faith.Quantity + "\n" +
-                            "followers: " + followers.Quantity + "\n" +
-                            "MAX RESOURCES: \n" +
-                            "money: " + money.Max + "\n" +
-                            "faith: " + faith.Max + "\n" +
-                            "followers: " + followers.Max + "\n");
-                    }
+                yield return new WaitForSeconds(marketList[0].Time);
+                foreach (BuildingSO market in marketList) {
+                    AddResources(market);
                 }
             }
         }
     }
 
-    private void AddResource(ResourceToGenerate resourceToGenerate) {
-        if (resourceToGenerate.Resource.Name.ToLower().Equals(faith.Name)) {
-            faith.AddResource(resourceToGenerate.QuantityToGenerate);
-        }
-        else if (resourceToGenerate.Resource.Name.ToLower().Equals(money.Name)) {
-            money.AddResource(resourceToGenerate.QuantityToGenerate);
-        }
-        else if (resourceToGenerate.Resource.Name.ToLower().Equals(followers.Name)) {
-            followers.AddResource(resourceToGenerate.QuantityToGenerate);
-        }
+    private void AddResources(BuildingSO building) {
+        money.AddResource(building.Resources[Constant.PROPERTIES_MONEY]);
+        faith.AddResource(building.Resources[Constant.PROPERTIES_FAITH]);
+        followers.AddResource(building.Resources[Constant.PROPERTIES_FOLLOWERS]);
     }
 }
