@@ -5,6 +5,7 @@ using UnityEngine;
 
 [System.Serializable]
 public class ExagoneCellData {
+    private BuildingSO lastBuilding;
     [SerializeField] private BuildingSO building;
     [SerializeField] private TerrainType terrainType;
     [SerializeField] private bool isRemovable;
@@ -14,18 +15,50 @@ public class ExagoneCellData {
 
     public void SetBuilding(BuildingSO building) {
         SetNewParameters(building);
-        this.building = building;
-        
+        this.building = building;        
+        lastBuilding = this.building;
     }
 
-    private void SetNewParameters(BuildingSO building) {
-        ResourceManager.Instance.Money.Max += building.Capacity[Constant.PROPERTIES_CAPACITY_MONEY];
-        ResourceManager.Instance.Faith.Max += building.Capacity[Constant.PROPERTIES_CAPACITY_FAITH];
-        ResourceManager.Instance.Followers.Max += building.Capacity[Constant.PROPERTIES_CAPACITY_FOLLOWERS];
-        if(this.building != null) {
-            ResourceManager.Instance.Money.Max -= this.building.Capacity[Constant.PROPERTIES_CAPACITY_MONEY];
-            ResourceManager.Instance.Faith.Max -= this.building.Capacity[Constant.PROPERTIES_CAPACITY_FAITH];
-            ResourceManager.Instance.Followers.Max -= this.building.Capacity[Constant.PROPERTIES_CAPACITY_FOLLOWERS];
+    public void SetNewParameters(BuildingSO building) {
+        if (building != null) {
+            switch (building.BuildingType) {
+                case BuildingType.House:
+                    ResourceManager.Instance.HouseList.Add(building);
+                    break;
+                case BuildingType.Statue:
+                    ResourceManager.Instance.StatueList.Add(building);
+                    break;
+                case BuildingType.Temple:
+                    ResourceManager.Instance.TempleList.Add(building);
+                    break;
+                case BuildingType.Market:
+                    ResourceManager.Instance.MarketList.Add(building);
+                    break;
+            }
+
+            ResourceManager.Instance.Money.Max += building.Capacity[ResourceType.Money];
+            ResourceManager.Instance.Faith.Max += building.Capacity[ResourceType.Faith];
+            ResourceManager.Instance.Followers.Max += building.Capacity[ResourceType.Followers];
+        }
+        if(lastBuilding != null) {
+            switch (lastBuilding.BuildingType) {
+                case BuildingType.House:
+                    ResourceManager.Instance.HouseList.Remove(building);
+                    break;
+                case BuildingType.Statue:
+                    ResourceManager.Instance.StatueList.Remove(building);
+                    break;
+                case BuildingType.Temple:
+                    ResourceManager.Instance.TempleList.Remove(building);
+                    break;
+                case BuildingType.Market:
+                    ResourceManager.Instance.MarketList.Remove(building);
+                    break;
+            }
+
+            ResourceManager.Instance.Money.Max -= lastBuilding.Capacity[ResourceType.Money];
+            ResourceManager.Instance.Faith.Max -= lastBuilding.Capacity[ResourceType.Faith];
+            ResourceManager.Instance.Followers.Max -= lastBuilding.Capacity[ResourceType.Followers];
         }
     }
 }

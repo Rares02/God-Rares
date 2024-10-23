@@ -101,8 +101,8 @@ public class ResourceManager : MonoBehaviour {
     }
 
     private void AddResources(BuildingSO building) {
-        money.AddResource(building.Resources[Constant.PROPERTIES_MONEY]);
-        faith.AddResource(building.Resources[Constant.PROPERTIES_FAITH]);
-        followers.AddResource(building.Resources[Constant.PROPERTIES_FOLLOWERS]);
+        money.AddResource(building.Resources[ResourceType.Money]);
+        faith.AddResource(building.Resources[ResourceType.Faith]);
+        followers.AddResource(building.Resources[ResourceType.Followers]);
     }
 }

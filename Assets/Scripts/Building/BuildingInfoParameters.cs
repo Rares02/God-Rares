@@ -15,26 +15,26 @@ public class BuildingInfoParameters : MonoBehaviour {
         if (cellData.CurrentBuilding.Level != 0) {
             SetLevel(cellData.CurrentBuilding.Level);
         }
-        if (cellData.CurrentBuilding.Resources[Constant.PROPERTIES_MONEY] != 0) {
-            SetMoney(cellData.CurrentBuilding.Resources[Constant.PROPERTIES_MONEY]);
+        if (cellData.CurrentBuilding.Resources[ResourceType.Money] != 0) {
+            SetMoney(cellData.CurrentBuilding.Resources[ResourceType.Money]);
         }
-        if (cellData.CurrentBuilding.Resources[Constant.PROPERTIES_FAITH] != 0) {
-            SetFaith(cellData.CurrentBuilding.Resources[Constant.PROPERTIES_FAITH]);
+        if (cellData.CurrentBuilding.Resources[ResourceType.Faith] != 0) {
+            SetFaith(cellData.CurrentBuilding.Resources[ResourceType.Faith]);
         }
-        if (cellData.CurrentBuilding.Resources[Constant.PROPERTIES_FOLLOWERS] != 0) {
-            SetFollowers(cellData.CurrentBuilding.Resources[Constant.PROPERTIES_FOLLOWERS]);
+        if (cellData.CurrentBuilding.Resources[ResourceType.Followers] != 0) {
+            SetFollowers(cellData.CurrentBuilding.Resources[ResourceType.Followers]);
         }
         if (cellData.CurrentBuilding.Time != 0) {
             SetTime(cellData.CurrentBuilding.Time);
         }
-        if (cellData.CurrentBuilding.Capacity[Constant.PROPERTIES_CAPACITY_MONEY] != 0) {
-            SetMoneyCap(cellData.CurrentBuilding.Capacity[Constant.PROPERTIES_CAPACITY_MONEY]);
+        if (cellData.CurrentBuilding.Capacity[ResourceType.Money] != 0) {
+            SetMoneyCap(cellData.CurrentBuilding.Capacity[ResourceType.Money]);
         }
-        if (cellData.CurrentBuilding.Capacity[Constant.PROPERTIES_CAPACITY_FAITH] != 0) {
-            SetFaithCap(cellData.CurrentBuilding.Capacity[Constant.PROPERTIES_CAPACITY_FAITH]);
+        if (cellData.CurrentBuilding.Capacity[ResourceType.Faith] != 0) {
+            SetFaithCap(cellData.CurrentBuilding.Capacity[ResourceType.Faith]);
         }
-        if (cellData.CurrentBuilding.Capacity[Constant.PROPERTIES_CAPACITY_FOLLOWERS] != 0) {
-            SetFollowersCap(cellData.CurrentBuilding.Capacity[Constant.PROPERTIES_CAPACITY_FOLLOWERS]);
+        if (cellData.CurrentBuilding.Capacity[ResourceType.Followers] != 0) {
+            SetFollowersCap(cellData.CurrentBuilding.Capacity[ResourceType.Followers]);
         }
     }
 

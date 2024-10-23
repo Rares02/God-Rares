@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,6 +6,20 @@ using UnityEngine;
 public class CellManager : MonoBehaviour
 {
     public BuildingViewer bv;
+
+    public void Initialize() {
+        for (int i = 0; i < transform.childCount; i++) {
+            ExagoneCell cell = transform.GetChild(i).GetComponent<ExagoneCell>();
+            if (cell.CellData.CurrentBuilding != null) {
+                foreach(BuildingSOType buildingTypes in GameManager.Instance.Buildings.BuildingTypes) {
+                    if(cell.CellData.CurrentBuilding.BuildingType == buildingTypes.Type) {
+                        cell.CellData.SetBuilding(buildingTypes.BuildingsLevels[0]);
+                    }
+                }                
+            }
+        }
+    }
+
     private void Update() {
         if(InputManager.TryRaycast(4000, out RaycastHit hit)) {
             if (hit.transform.gameObject.layer == LayerMask.NameToLayer("Default")) {
@@ -17,4 +32,6 @@ public class CellManager : MonoBehaviour
             }
         }
     }
+
+
 }

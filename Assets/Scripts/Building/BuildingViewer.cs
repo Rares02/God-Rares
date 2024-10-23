@@ -6,12 +6,14 @@ using UnityEngine;
 public class BuildingViewer : MonoBehaviour {
     public BuildingInfoPanel infoPanel;
     public BuildingMenuPanel menuPanel;
+    public BuildingUpgradePanel upgradePanel;
     public void SetClickUIForBuildingCell(ExagoneCell currentCell) {
         infoPanel.OpenPermanentInfo(currentCell);
         if (currentCell.CellData.CurrentBuilding == null) {            
-            menuPanel.OpenMenu(currentCell);
+            menuPanel.OpenPanel(currentCell);
         }
         else {
+            upgradePanel.OpenPanel(currentCell);
             menuPanel.CloseMenu();
         }
     }
@@ -25,5 +27,6 @@ public class BuildingViewer : MonoBehaviour {
     public void CloseAllPanels() {
         infoPanel.ClosePermanentInfo();
         menuPanel.CloseMenu();
+        upgradePanel.CloseMenu();
     }
 }

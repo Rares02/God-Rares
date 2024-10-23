@@ -53,7 +53,7 @@ public class BuildingInfoPanel : BuildingPanel {
                     return;
                 }
             }            
-            cellType.text = exagoneCellData.CurrentBuilding.name;
+            cellType.text = exagoneCellData.CurrentBuilding.BuildingType.ToString();
             buildingInfoParameters.SetupInfo(exagoneCellData);
         }
         lastInfo = exagoneCellData;
@@ -63,7 +63,13 @@ public class BuildingInfoPanel : BuildingPanel {
         if (terrainType.text != lastInfo.TerrainType.ToString()) {
             terrainType.text = lastInfo.TerrainType.ToString();
         }
-        cellType.text = lastInfo.CurrentBuilding.name;
-        buildingInfoParameters.SetupInfo(lastInfo);
+        if (lastInfo.CurrentBuilding != null) {
+            cellType.text = lastInfo.CurrentBuilding.BuildingType.ToString();
+            buildingInfoParameters.SetupInfo(lastInfo);
+        }
+        else {
+            cellType.text = UIText.INFO_PANEL_CELL_EMPTY;
+            buildingInfoParameters.SetupEmptyInfo();
+        }
     }
 }
