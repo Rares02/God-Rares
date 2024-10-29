@@ -68,7 +68,7 @@ public class GameManager : MonoBehaviour {
     }
 
     private void AddName(BuildingSO building) {
-        building.Name = buildingsData[building.BuildingType.ToString(), Constant.PROPERTIES_MONEY];
+        building.Name = buildingsData[building.BuildingType.ToString(), Constant.PROPERTIES_NAME];
 
     }
     private void AddBuildingResources(BuildingSO building) {

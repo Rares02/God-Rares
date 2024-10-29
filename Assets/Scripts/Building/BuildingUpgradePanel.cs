@@ -8,8 +8,9 @@ public class BuildingUpgradePanel : BuildingPanel
     [SerializeField] private BuildingUpgradeButton upgradeButton;
     [SerializeField] private BuildingUpgradeButton removeButton;
     public void UpgradeBuilding() {
-        if (ResourceManager.Instance.HaveEnoughResources(CurrentCell.CellData.CurrentBuilding.Cost)) {
-            CurrentCell.SetNewBuilding(GameManager.Instance.GetNexLevel(CurrentCell.CellData.CurrentBuilding));
+        BuildingSO nextLevel = GameManager.Instance.GetNexLevel(CurrentCell.CellData.CurrentBuilding);
+        if (ResourceManager.Instance.HaveEnoughResources(nextLevel.Cost)) {
+            CurrentCell.SetNewBuilding(nextLevel);
             CloseMenu();
         }
     }
@@ -25,6 +26,9 @@ public class BuildingUpgradePanel : BuildingPanel
             upgradeButton.gameObject.SetActive(false);
         }
         else {
+            BuildingSO nextLevel = GameManager.Instance.GetNexLevel(CurrentCell.CellData.CurrentBuilding);
+            upgradeButton.SetCosts(nextLevel.Cost);
+            upgradeButton.SetLevelText(CurrentCell.CellData.CurrentBuilding.Level);
             upgradeButton.gameObject.SetActive(true);
         }
         if (CurrentCell.CellData.CurrentBuilding.IsBuyable) {

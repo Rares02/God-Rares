@@ -53,7 +53,7 @@ public class BuildingInfoPanel : BuildingPanel {
                     return;
                 }
             }            
-            cellType.text = exagoneCellData.CurrentBuilding.BuildingType.ToString();
+            cellType.text = exagoneCellData.CurrentBuilding.Name;
             buildingInfoParameters.SetupInfo(exagoneCellData);
         }
         lastInfo = exagoneCellData;
@@ -64,7 +64,7 @@ public class BuildingInfoPanel : BuildingPanel {
             terrainType.text = lastInfo.TerrainType.ToString();
         }
         if (lastInfo.CurrentBuilding != null) {
-            cellType.text = lastInfo.CurrentBuilding.BuildingType.ToString();
+            cellType.text = lastInfo.CurrentBuilding.Name;
             buildingInfoParameters.SetupInfo(lastInfo);
         }
         else {

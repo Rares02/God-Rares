@@ -13,6 +13,7 @@ public class BuildingPanel : UIPanel
     }
 
     public virtual void OpenPanel(ExagoneCell exagoneCell) {
+        UISystem.Instance.CloseOtherPanels(this);
         SetCurrentCell(exagoneCell);
         gameObject.SetActive(true);
     }

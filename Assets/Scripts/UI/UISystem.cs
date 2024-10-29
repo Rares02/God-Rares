@@ -1,18 +1,26 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class UISystem : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+    [SerializeField] private BuildingPanel[] panels;
+
+
+    private static UISystem instance;
+    public static UISystem Instance {
+        get {
+            instance = FindFirstObjectByType<UISystem>();
+            return instance;
+        }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    public void CloseOtherPanels(BuildingPanel buildingPanel) {
+        foreach (BuildingPanel panel in panels) {
+            if (panel != buildingPanel) {
+                panel.gameObject.SetActive(false);
+            }
+        }
     }
 }
