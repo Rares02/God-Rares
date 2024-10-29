@@ -52,6 +52,7 @@ public class GameManager : MonoBehaviour {
             int level = 1;
             foreach (BuildingSO building in buildingType.BuildingsLevels) {
                 building.Level = level;
+                AddName(building);
                 AddBuildingResources(building);
                 AddBuildingCosts(building);
                 AddBuildingCapacities(building);
@@ -64,6 +65,11 @@ public class GameManager : MonoBehaviour {
             AddAbilityGainedResources(ability);
             AddAbilityLostResources(ability);
         }
+    }
+
+    private void AddName(BuildingSO building) {
+        building.Name = buildingsData[building.BuildingType.ToString(), Constant.PROPERTIES_MONEY];
+
     }
     private void AddBuildingResources(BuildingSO building) {
         List<int> values = new List<int>();

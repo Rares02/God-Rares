@@ -77,7 +77,7 @@ public class BuildingInfoParameters : MonoBehaviour {
         fields.nameField.SetText(UIText.INFO_PANEL_FOLLOWERS_CAPACITY);
         fields.nameField.SetText(value.ToString());*/
         names[7].SetText(UIText.INFO_PANEL_FOLLOWERS_CAPACITY);
-        values[7].SetText(value.ToString());
+        values[7].SetText(value);
         SetFieldsActive(7);
     }
 
@@ -86,7 +86,7 @@ public class BuildingInfoParameters : MonoBehaviour {
         fields.nameField.SetText(UIText.INFO_PANEL_FAITH_CAPACITY);
         fields.nameField.SetText(value.ToString());*/
         names[6].SetText(UIText.INFO_PANEL_FAITH_CAPACITY);
-        values[6].SetText(value.ToString());
+        values[6].SetText(value);
         SetFieldsActive(6);
     }
 
@@ -95,7 +95,7 @@ public class BuildingInfoParameters : MonoBehaviour {
         fields.nameField.SetText(UIText.INFO_PANEL_MONEY_CAPACITY);
         fields.nameField.SetText(value.ToString());*/
         names[5].SetText(UIText.INFO_PANEL_MONEY_CAPACITY);
-        values[5].SetText(value.ToString());
+        values[5].SetText(value);
         SetFieldsActive(5);
     }
 
@@ -104,7 +104,7 @@ public class BuildingInfoParameters : MonoBehaviour {
         fields.nameField.SetText(UIText.INFO_PANEL_TIME);
         fields.nameField.SetText(value.ToString());*/
         names[4].SetText(UIText.INFO_PANEL_TIME);
-        values[4].SetText(value.ToString());
+        values[4].SetText(value);
         SetFieldsActive(4);
     }
 
@@ -113,7 +113,7 @@ public class BuildingInfoParameters : MonoBehaviour {
         fields.nameField.SetText(UIText.INFO_PANEL_FOLLOWERS);
         fields.nameField.SetText(value.ToString());*/
         names[3].SetText(UIText.INFO_PANEL_FOLLOWERS);
-        values[3].SetText(value.ToString());
+        values[3].SetText(value);
         SetFieldsActive(3);
     }
 
@@ -122,7 +122,7 @@ public class BuildingInfoParameters : MonoBehaviour {
         fields.nameField.SetText(UIText.INFO_PANEL_FAITH);
         fields.nameField.SetText(value.ToString());*/
         names[2].SetText(UIText.INFO_PANEL_FAITH);
-        values[2].SetText(value.ToString());
+        values[2].SetText(value);
         SetFieldsActive(2);
     }
 
@@ -131,7 +131,7 @@ public class BuildingInfoParameters : MonoBehaviour {
         fields.nameField.SetText(UIText.INFO_PANEL_MONEY);
         fields.nameField.SetText(value.ToString());*/
         names[1].SetText(UIText.INFO_PANEL_MONEY);
-        values[1].SetText(value.ToString());
+        values[1].SetText(value);
         SetFieldsActive(1);
     }
 
@@ -140,7 +140,7 @@ public class BuildingInfoParameters : MonoBehaviour {
         fields.nameField.SetText(UIText.INFO_PANEL_LEVEL);
         fields.nameField.SetText(value.ToString());*/
         names[0].SetText(UIText.INFO_PANEL_LEVEL);
-        values[0].SetText(value.ToString());
+        values[0].SetText(value);
         SetFieldsActive(0);
     }
 

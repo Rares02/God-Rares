@@ -1858,20 +1858,25 @@ MonoBehaviour:
     - buildingLevels:
       - {fileID: 11400000, guid: 523347b9bd6e1bf48ad4330b860eb0e6, type: 2}
       - {fileID: 11400000, guid: 61a4ea510dad63143b0e12a5114768e3, type: 2}
+      - {fileID: 11400000, guid: 755b8722f60207449b37b02d16fbc8ac, type: 2}
     - buildingLevels:
       - {fileID: 11400000, guid: ac246b9fa9766314a818cd67c70cf4b2, type: 2}
       - {fileID: 11400000, guid: 2e73851d54e5cf643aae8e179610de20, type: 2}
+      - {fileID: 11400000, guid: d883a605d02b1824a8fc1970fb377bdb, type: 2}
     - buildingLevels:
       - {fileID: 11400000, guid: 9f23e2223924891478d90cc43a63a626, type: 2}
       - {fileID: 11400000, guid: dd8fb25e19541c24cb70ca5765e26880, type: 2}
+      - {fileID: 11400000, guid: 33d58cdee8a622b47b69a5233ebfa8c6, type: 2}
     - buildingLevels:
       - {fileID: 11400000, guid: 2232ab3ad7923fb499676814d1903eb2, type: 2}
       - {fileID: 11400000, guid: fc67b28814ed679468ffed6b0252a329, type: 2}
-  abilities:
-  - {fileID: 11400000, guid: 1fef3d4c4a2211c48a7fe574f17ee5f4, type: 2}
-  - {fileID: 11400000, guid: 4de3f1ee0ce052c4888c79ffd4b2c0eb, type: 2}
-  - {fileID: 11400000, guid: 027c744e8fb84fa4185aa754eb72f26a, type: 2}
-  - {fileID: 11400000, guid: 0814b91183128c642bbb8470100b95ac, type: 2}
+      - {fileID: 11400000, guid: 5dcaadbf662f43d4ba3290007d8b801d, type: 2}
+    - buildingLevels:
+      - {fileID: 11400000, guid: 27fcb0507772cb444a08ef7c3f27fa5b, type: 2}
+      - {fileID: 11400000, guid: df19fb8d90f490a449ffe48e12a3f266, type: 2}
+      - {fileID: 11400000, guid: 0575b964dadfd504d8dadcb5e7e99298, type: 2}
+      - {fileID: 11400000, guid: 1dbb4155763e8134aabbc50e25a43af4, type: 2}
+  abilities: []
 --- !u!1 &557034030
 GameObject:
   m_ObjectHideFlags: 0
@@ -3600,7 +3605,7 @@ PrefabInstance:
     - target: {fileID: 4229380442772572257, guid: 48818ba85f3524d44a419377761ce7cd, type: 3}
       propertyPath: cellData.building
       value: 
-      objectReference: {fileID: 11400000, guid: 9f23e2223924891478d90cc43a63a626, type: 2}
+      objectReference: {fileID: 11400000, guid: 27fcb0507772cb444a08ef7c3f27fa5b, type: 2}
     - target: {fileID: 4229380442772572257, guid: 48818ba85f3524d44a419377761ce7cd, type: 3}
       propertyPath: cellData.isRemovable
       value: 0

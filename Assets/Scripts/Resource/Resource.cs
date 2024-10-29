@@ -17,7 +17,7 @@ public class Resource {
     public void AddResource(int quantity) {
         this.quantity = Mathf.Clamp(this.quantity + quantity, 0, Max);
     }
-    public void RemoveQuantity(int quantity) {
+    public void RemoveResource(int quantity) {
         this.quantity = Mathf.Clamp(this.quantity - quantity, 0, Max);
     }
 

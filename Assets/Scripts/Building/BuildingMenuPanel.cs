@@ -7,8 +7,11 @@ public class BuildingMenuPanel : BuildingPanel {
     [SerializeField] private BuildingMenuButton button;
     [SerializeField] private GameObject content;
     public void BuyBuilding(int index) {
-        CurrentCell.SetNewBuilding(GameManager.Instance.Buildings.BuildingTypes[index].BuildingsLevels[0]);
-        CloseMenu();
+        BuildingSO selectedBuilding = GameManager.Instance.Buildings.BuildingTypes[index].BuildingsLevels[0];
+        if (ResourceManager.Instance.HaveEnoughResources(selectedBuilding.Cost)) {
+            CurrentCell.SetNewBuilding(selectedBuilding);
+            CloseMenu();
+        }
     }
     public override void OpenPanel(ExagoneCell exagoneCell) {
         base.OpenPanel(exagoneCell);
@@ -18,8 +21,11 @@ public class BuildingMenuPanel : BuildingPanel {
     private void GenerateButtonList() {
         ClearButtons();
         for (int i = 0; i < GameManager.Instance.Buildings.BuildingTypes.Count; i++){
-            if (!GameManager.Instance.Buildings.BuildingTypes[i].BuildingsLevels[0].IsBuyable) continue;
+            BuildingSO building = GameManager.Instance.Buildings.BuildingTypes[i].BuildingsLevels[0];
+            if (!building.IsBuyable) continue;
             BuildingMenuButton newButton = Instantiate(button, content.transform);
+            newButton.BuindingName.SetText(building.BuildingType.ToString());
+            newButton.SetCosts(building.Cost);
             int index = i;
             newButton.OnClick_Get.AddListener(() => { BuyBuilding(index); });
         }

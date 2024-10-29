@@ -24,9 +24,9 @@ public class AbilitySO : ScriptableObject {
     }
 
     private void RemoveResources() {
-        ResourceManager.Instance.Money.RemoveQuantity(resourcesToConsume[ResourceType.Money]);
-        ResourceManager.Instance.Faith.RemoveQuantity(resourcesToConsume[ResourceType.Faith]);
-        ResourceManager.Instance.Followers.RemoveQuantity(resourcesToConsume[ResourceType.Followers]);
+        ResourceManager.Instance.Money.RemoveResource(resourcesToConsume[ResourceType.Money]);
+        ResourceManager.Instance.Faith.RemoveResource(resourcesToConsume[ResourceType.Faith]);
+        ResourceManager.Instance.Followers.RemoveResource(resourcesToConsume[ResourceType.Followers]);
     }
     private void GainResources() {
         ResourceManager.Instance.Money.AddResource(resourcesToGain[ResourceType.Money]);

@@ -11,4 +11,7 @@ public class GenericText : MonoBehaviour
     public void SetText(string newText) {
         text.text = newText;
     }
+    public void SetText(int newText) {
+        text.text = newText.ToString();
+    }
 }

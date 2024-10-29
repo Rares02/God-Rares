@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,8 +8,10 @@ public class BuildingUpgradePanel : BuildingPanel
     [SerializeField] private BuildingUpgradeButton upgradeButton;
     [SerializeField] private BuildingUpgradeButton removeButton;
     public void UpgradeBuilding() {
-        CurrentCell.SetNewBuilding(GameManager.Instance.GetNexLevel(CurrentCell.CellData.CurrentBuilding));
-        CloseMenu();
+        if (ResourceManager.Instance.HaveEnoughResources(CurrentCell.CellData.CurrentBuilding.Cost)) {
+            CurrentCell.SetNewBuilding(GameManager.Instance.GetNexLevel(CurrentCell.CellData.CurrentBuilding));
+            CloseMenu();
+        }
     }
 
     public void RemoveBuilding() {
@@ -18,7 +21,7 @@ public class BuildingUpgradePanel : BuildingPanel
 
     public override void OpenPanel(ExagoneCell exagoneCell) {
         base.OpenPanel(exagoneCell);
-        if(CurrentCell.CellData.CurrentBuilding.Level == CurrentCell.CellData.CurrentBuilding.MaxLevel) {
+        if(CurrentCell.CellData.CurrentBuilding.Level == CurrentCell.CellData.CurrentBuilding.MaxLevel + 1) {
             upgradeButton.gameObject.SetActive(false);
         }
         else {

@@ -12,6 +12,7 @@ public enum BuildingType {
     Statue = 1,
     Temple = 2,
     Market = 3,
+    GodRares = 4,
 }
 
 public enum ResourceType {

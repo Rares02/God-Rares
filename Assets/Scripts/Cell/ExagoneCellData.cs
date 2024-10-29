@@ -21,6 +21,8 @@ public class ExagoneCellData {
 
     public void SetNewParameters(BuildingSO building) {
         if (building != null) {
+            ResourceManager.Instance.RemoveResources(building.Cost);
+
             switch (building.BuildingType) {
                 case BuildingType.House:
                     ResourceManager.Instance.HouseList.Add(building);
@@ -34,11 +36,17 @@ public class ExagoneCellData {
                 case BuildingType.Market:
                     ResourceManager.Instance.MarketList.Add(building);
                     break;
+                case BuildingType.GodRares:
+                    ResourceManager.Instance.GodRaresList.Add(building);
+                    break;
             }
 
             ResourceManager.Instance.Money.Max += building.Capacity[ResourceType.Money];
             ResourceManager.Instance.Faith.Max += building.Capacity[ResourceType.Faith];
             ResourceManager.Instance.Followers.Max += building.Capacity[ResourceType.Followers];
+        }
+        else {
+            //ResourceManager.Instance.AddResources(lastBuilding.Refund);
         }
         if(lastBuilding != null) {
             switch (lastBuilding.BuildingType) {
@@ -53,6 +61,9 @@ public class ExagoneCellData {
                     break;
                 case BuildingType.Market:
                     ResourceManager.Instance.MarketList.Remove(building);
+                    break;
+                case BuildingType.GodRares:
+                    ResourceManager.Instance.GodRaresList.Remove(building);
                     break;
             }
 
