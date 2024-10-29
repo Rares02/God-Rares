@@ -8,27 +8,29 @@ public class AbilitySO : ScriptableObject {
 
     //DA INSERIRE I DATI DAL GAME MANAGER!!
 
-    private string abilityName;
-    private Dictionary<string, int> resourcesToConsume;
-    private Dictionary<string, int> resourcesToGain;
+    [SerializeField] private AbilityType abilityType;
+    private Dictionary<ResourceType, int> resourcesToConsume = new Dictionary<ResourceType, int>();
+    private Dictionary<ResourceType, int> resourcesToGain = new Dictionary<ResourceType, int>();
+    private float cooldown;
 
-    public string AbilityName { get =>  abilityName; set => abilityName = value; }
-    public Dictionary<string, int> ResourcesToConsume { get => resourcesToConsume; set => resourcesToConsume = value; }
-    public Dictionary<string, int> ResourcesToGain { get => resourcesToGain; set => resourcesToGain = value; }
+    public AbilityType AbilityType => abilityType;
+    public Dictionary<ResourceType, int> ResourcesToConsume { get => resourcesToConsume; set => resourcesToConsume = value; }
+    public Dictionary<ResourceType, int> ResourcesToGain { get => resourcesToGain; set => resourcesToGain = value; }
+    public float Cooldown => cooldown;
 
     public void Activate() {
         RemoveResources();
-        GainResources();
+        GainResources();    
     }
 
     private void RemoveResources() {
-        ResourceManager.Instance.Money.RemoveQuantity(resourcesToConsume["Money Lost"]);
-        ResourceManager.Instance.Faith.RemoveQuantity(resourcesToConsume["Faith Lost"]);
-        ResourceManager.Instance.Followers.RemoveQuantity(resourcesToConsume["Followers Lost"]);
+        ResourceManager.Instance.Money.RemoveQuantity(resourcesToConsume[ResourceType.Money]);
+        ResourceManager.Instance.Faith.RemoveQuantity(resourcesToConsume[ResourceType.Faith]);
+        ResourceManager.Instance.Followers.RemoveQuantity(resourcesToConsume[ResourceType.Followers]);
     }
     private void GainResources() {
-        ResourceManager.Instance.Money.AddResource(resourcesToGain["Money Received"]);
-        ResourceManager.Instance.Faith.AddResource(resourcesToGain["Faith Received"]);
-        ResourceManager.Instance.Followers.AddResource(resourcesToGain["Followers Received"]);
+        ResourceManager.Instance.Money.AddResource(resourcesToGain[ResourceType.Money]);
+        ResourceManager.Instance.Faith.AddResource(resourcesToGain[ResourceType.Faith]);
+        ResourceManager.Instance.Followers.AddResource(resourcesToGain[ResourceType.Followers]);
     }
 }

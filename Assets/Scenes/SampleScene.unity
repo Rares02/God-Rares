@@ -1867,6 +1867,11 @@ MonoBehaviour:
     - buildingLevels:
       - {fileID: 11400000, guid: 2232ab3ad7923fb499676814d1903eb2, type: 2}
       - {fileID: 11400000, guid: fc67b28814ed679468ffed6b0252a329, type: 2}
+  abilities:
+  - {fileID: 11400000, guid: 1fef3d4c4a2211c48a7fe574f17ee5f4, type: 2}
+  - {fileID: 11400000, guid: 4de3f1ee0ce052c4888c79ffd4b2c0eb, type: 2}
+  - {fileID: 11400000, guid: 027c744e8fb84fa4185aa754eb72f26a, type: 2}
+  - {fileID: 11400000, guid: 0814b91183128c642bbb8470100b95ac, type: 2}
 --- !u!1 &557034030
 GameObject:
   m_ObjectHideFlags: 0

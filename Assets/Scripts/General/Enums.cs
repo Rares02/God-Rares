@@ -19,3 +19,10 @@ public enum ResourceType {
     Faith = 1,
     Followers = 2,
 }
+
+public enum AbilityType {
+    Sacrifice = 0,
+    Bless = 1,
+    MiracleOfLife = 2,
+    Tribute = 3
+}

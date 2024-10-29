@@ -20,15 +20,31 @@ public class GameManager : MonoBehaviour {
     private GameObject prefab;
 
     [SerializeField] private Buildings buildings;
+    [SerializeField] private List<AbilitySO> abilities;
     public Buildings Buildings => buildings;
+    public List<AbilitySO> Abilities => abilities; 
 
     GoogleSheet buildingsData;
-    const string linkToSheet = "https://sheets.googleapis.com/v4/spreadsheets/14jqLb3pwnneEam54HM05yes5jRJkelrUBzp3YRgRKA4/values/Edifici?key=AIzaSyCAqTvJSJqZE_RLfk03HQKQj2EEGjbK1Cg";
+    GoogleSheet abilitiesData;
+    const string buildingsLinkToSheet = "https://sheets.googleapis.com/v4/spreadsheets/14jqLb3pwnneEam54HM05yes5jRJkelrUBzp3YRgRKA4/values/Edifici?key=AIzaSyCAqTvJSJqZE_RLfk03HQKQj2EEGjbK1Cg";
+    const string abilitiesLinkToSheet = "https://sheets.googleapis.com/v4/spreadsheets/14jqLb3pwnneEam54HM05yes5jRJkelrUBzp3YRgRKA4/values/Abilita?key=AIzaSyCAqTvJSJqZE_RLfk03HQKQj2EEGjbK1Cg";
 
     private IEnumerator Start() {
-        yield return GoogleSheetToUnity.ObtainSheetData(linkToSheet, result => { buildingsData = result; });
+        yield return GoogleSheetToUnity.ObtainSheetData(buildingsLinkToSheet, result => { buildingsData = result; });
+        yield return GoogleSheetToUnity.ObtainSheetData(abilitiesLinkToSheet, result => { abilitiesData = result; });
         SetBuildingsData();
+        SetAbilitiesData();
         cellManager.Initialize();
+        foreach(AbilitySO ability in abilities) {
+            Debug.Log("Resources gained: ");
+            foreach(KeyValuePair<ResourceType, int> resource in ability.ResourcesToGain) {
+                Debug.Log(resource.Key + " " + resource.Value);
+            }
+            Debug.Log("Resources used: ");
+            foreach(KeyValuePair<ResourceType, int> resource in ability.ResourcesToConsume) {
+                Debug.Log(resource.Key + " " + resource.Value);
+            }
+        }
     }
 
     public void SetBuildingsData() {
@@ -36,14 +52,20 @@ public class GameManager : MonoBehaviour {
             int level = 1;
             foreach (BuildingSO building in buildingType.BuildingsLevels) {
                 building.Level = level;
-                AddResources(building);
-                AddCosts(building);
-                AddCapacities(building);
+                AddBuildingResources(building);
+                AddBuildingCosts(building);
+                AddBuildingCapacities(building);
                 level++;
             }
         }
     }
-    private void AddResources(BuildingSO building) {
+    public void SetAbilitiesData() {
+        foreach(AbilitySO ability in abilities) {
+            AddAbilityGainedResources(ability);
+            AddAbilityLostResources(ability);
+        }
+    }
+    private void AddBuildingResources(BuildingSO building) {
         List<int> values = new List<int>();
         List<int> times = new List<int>();
         if (GoogleSheet.TryFromStringToListInt(buildingsData[building.BuildingType.ToString(), Constant.PROPERTIES_MONEY], out values)) {
@@ -65,7 +87,7 @@ public class GameManager : MonoBehaviour {
             }
         }
     }
-    private void AddCosts(BuildingSO building) {
+    private void AddBuildingCosts(BuildingSO building) {
         List<int> ints = new List<int>();
         if (GoogleSheet.TryFromStringToListInt(buildingsData[building.BuildingType.ToString(), Constant.PROPERTIES_COST_MONEY], out ints)) {
             building.Cost.Add(ResourceType.Money, ints[building.Level - 1]);
@@ -79,7 +101,7 @@ public class GameManager : MonoBehaviour {
             building.Cost.Add(ResourceType.Followers, ints[building.Level - 1]);
         }
     }
-    private void AddCapacities(BuildingSO building) {
+    private void AddBuildingCapacities(BuildingSO building) {
         List<int> ints = new List<int>();
         if (GoogleSheet.TryFromStringToListInt(buildingsData[building.BuildingType.ToString(), Constant.PROPERTIES_CAPACITY_MONEY], out ints)) {
             building.Capacity.Add(ResourceType.Money, ints[building.Level - 1]);
@@ -91,16 +113,38 @@ public class GameManager : MonoBehaviour {
             building.Capacity.Add(ResourceType.Followers, ints[building.Level - 1]);
         }
     }
-
     public BuildingSO GetNexLevel(BuildingSO building) {
         if (buildings[building.BuildingType].BuildingsLevels.Count > building.Level)
             return buildings[building.BuildingType].BuildingsLevels[building.Level];
         return null;
     }
-
     private void GetValueByLevel(List<int> list, int level) {
         if (list.Count < level) {
 
+        }
+    }
+    private void AddAbilityGainedResources(AbilitySO ability) {
+        List<int> values = new List<int>();
+        if (GoogleSheet.TryFromStringToListInt(abilitiesData[ability.AbilityType.ToString(), Constant.ABILITIES_MONEY_RECEIVED], out values)) {
+            ability.ResourcesToGain.Add(ResourceType.Money, values[0]);
+        }
+        if (GoogleSheet.TryFromStringToListInt(abilitiesData[ability.AbilityType.ToString(), Constant.ABILITIES_FAITH_RECEIVED], out values)) {
+            ability.ResourcesToGain.Add(ResourceType.Faith, values[0]);
+        }
+        if (GoogleSheet.TryFromStringToListInt(abilitiesData[ability.AbilityType.ToString(), Constant.ABILITIES_FOLLOWERS_RECEIVED], out values)) {
+            ability.ResourcesToGain.Add(ResourceType.Followers, values[0]);
+        }
+    }
+    private void AddAbilityLostResources(AbilitySO ability) {
+        List<int> values = new List<int>();
+        if (GoogleSheet.TryFromStringToListInt(abilitiesData[ability.AbilityType.ToString(), Constant.ABILITIES_MONEY_COST], out values)) {
+            ability.ResourcesToConsume.Add(ResourceType.Money, values[0]);
+        }
+        if (GoogleSheet.TryFromStringToListInt(abilitiesData[ability.AbilityType.ToString(), Constant.ABILITIES_FAITH_COST], out values)) {
+            ability.ResourcesToConsume.Add(ResourceType.Faith, values[0]);
+        }
+        if (GoogleSheet.TryFromStringToListInt(abilitiesData[ability.AbilityType.ToString(), Constant.ABILITIES_FOLLOWERS_COST], out values)) {
+            ability.ResourcesToConsume.Add(ResourceType.Followers, values[0]);
         }
     }
 }

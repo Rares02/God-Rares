@@ -23,5 +23,11 @@ public static class Constant {
     public const string PROPERTIES_CAPACITY_FOLLOWERS = "capacity follower";
     public const string PROPERTIES_CAPACITY_CONSTRUCTION_TIME = "construction time";
 
+    public const string ABILITIES_MONEY_RECEIVED = "money received";
+    public const string ABILITIES_FAITH_RECEIVED = "faith received";
+    public const string ABILITIES_FOLLOWERS_RECEIVED = "followers received";
+    public const string ABILITIES_MONEY_COST = "money lost";
+    public const string ABILITIES_FAITH_COST = "faith lost";
+    public const string ABILITIES_FOLLOWERS_COST = "followers lost";
 
 }
