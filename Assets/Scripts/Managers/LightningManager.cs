@@ -9,6 +9,11 @@ public class LightningManager : MonoBehaviour {
     [SerializeField] private LightingPreset preset;
     [SerializeField] private float dayNightCycleTime;
     [SerializeField][Range(0, 180)] private float TimeOfDay;
+    [SerializeField] private float timeOffset;
+
+    private void Start() {
+        TimeOfDay += timeOffset;
+    }
 
     private void Update() {
         if (preset == null) return;
