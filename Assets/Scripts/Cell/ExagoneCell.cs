@@ -8,7 +8,7 @@ public class ExagoneCell : MonoBehaviour {
 
     public ExagoneCellData CellData => cellData;
 
-    public BuildingViewer buildingViewer;
+    private BuildingViewer buildingViewer => UISystem.Instance.BuildingViewer;
 
     public void OnClick() {
         buildingViewer.SetClickUIForBuildingCell(this);

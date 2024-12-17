@@ -20,9 +20,9 @@ public class GameManager : MonoBehaviour {
     private GameObject prefab;
 
     [SerializeField] private Buildings buildings;
-    [SerializeField] private List<AbilitySO> abilities;
+    [SerializeField] private Abilities abilities;
     public Buildings Buildings => buildings;
-    public List<AbilitySO> Abilities => abilities; 
+    public Abilities Abilities => abilities; 
 
     GoogleSheet buildingsData;
     GoogleSheet abilitiesData;
@@ -35,7 +35,7 @@ public class GameManager : MonoBehaviour {
         SetBuildingsData();
         SetAbilitiesData();
         cellManager.Initialize();
-        foreach(AbilitySO ability in abilities) {
+        foreach(AbilitySO ability in abilities.AbilitiesSO) {
             Debug.Log("Resources gained: ");
             foreach(KeyValuePair<ResourceType, int> resource in ability.ResourcesToGain) {
                 Debug.Log(resource.Key + " " + resource.Value);
@@ -61,7 +61,7 @@ public class GameManager : MonoBehaviour {
         }
     }
     public void SetAbilitiesData() {
-        foreach(AbilitySO ability in abilities) {
+        foreach(AbilitySO ability in abilities.AbilitiesSO) {
             AddAbilityGainedResources(ability);
             AddAbilityLostResources(ability);
         }
@@ -174,6 +174,24 @@ public class Buildings {
             foreach (BuildingSOType buildingType in buildingTypes) {
                 if (buildingType.Type == type) {
                     return buildingType;
+                }
+            }
+            return null;
+        }
+    }
+}
+
+[System.Serializable]
+public class Abilities {
+    [SerializeField] List<AbilitySO> abilitiesSO;
+
+    public List<AbilitySO> AbilitiesSO => abilitiesSO;
+
+    public AbilitySO this[AbilityType type] {
+        get {
+            foreach (AbilitySO abilityType in abilitiesSO) {
+                if (abilityType.AbilityType == type) {
+                    return abilityType;
                 }
             }
             return null;

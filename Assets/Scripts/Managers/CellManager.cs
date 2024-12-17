@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class CellManager : MonoBehaviour
 {
-    public BuildingViewer bv;
 
     public void Initialize() {
         for (int i = 0; i < transform.childCount; i++) {
@@ -28,7 +27,7 @@ public class CellManager : MonoBehaviour
                 }
             }
             else if(hit.transform.gameObject.layer == LayerMask.NameToLayer("Water")) {
-                bv.infoPanel.CloseTemporaryInfo();
+                UISystem.Instance.BuildingViewer.infoPanel.CloseTemporaryInfo();
             }
         }
     }

@@ -5,7 +5,6 @@ using UnityEngine.InputSystem;
 public class InputManager : MonoBehaviour
 {
     [SerializeField] private PlayerInput input;
-    public BuildingViewer bv;
     private static Vector2 mousePosition;
 
 
@@ -22,7 +21,7 @@ public class InputManager : MonoBehaviour
                     }
                 }
                 else if (hit.transform.gameObject.layer == LayerMask.NameToLayer("Water")) {
-                    bv.CloseAllPanels();
+                    UISystem.Instance.BuildingViewer.CloseAllPanels();
                 }
             }
 

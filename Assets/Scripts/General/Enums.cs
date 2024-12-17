@@ -27,3 +27,4 @@ public enum AbilityType {
     MiracleOfLife = 2,
     Tribute = 3
 }
+
