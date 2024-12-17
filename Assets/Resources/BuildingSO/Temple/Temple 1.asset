@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Temple 1
   m_EditorClassIdentifier: 
   buildingType: 2
-  model: {fileID: 919132149155446097, guid: 18a4628db03fcec4b8083b62324379ff, type: 3}
+  model: {fileID: 919132149155446097, guid: 4c548af9ea6221d4586a6331f23543dd, type: 3}
   isBuyable: 1

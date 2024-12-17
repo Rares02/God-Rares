@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: House 2
   m_EditorClassIdentifier: 
   buildingType: 0
-  model: {fileID: 919132149155446097, guid: fa70fea00db91f840a03f8b8942af3ec, type: 3}
+  model: {fileID: 919132149155446097, guid: bb30a7936e7f6534085a4a93abcd0e65, type: 3}
   isBuyable: 1

@@ -19,8 +19,10 @@ public class AbilitySO : ScriptableObject {
     public float Cooldown => cooldown;
 
     public void Activate() {
-        RemoveResources();
-        GainResources();    
+        if (ResourceManager.Instance.HaveEnoughResources(resourcesToConsume)) {
+            RemoveResources();
+            GainResources();
+        }
     }
 
     private void RemoveResources() {

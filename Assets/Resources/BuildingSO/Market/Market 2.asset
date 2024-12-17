@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Market 2
   m_EditorClassIdentifier: 
   buildingType: 3
-  model: {fileID: 919132149155446097, guid: 1054181633ecdde4cbc1db44e4ec23e0, type: 3}
+  model: {fileID: 919132149155446097, guid: 8a8b451414cfefe45a3b98f6e3788183, type: 3}
   isBuyable: 1
