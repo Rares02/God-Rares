@@ -3,8 +3,10 @@ using UnityEngine;
 public class UISystem : MonoBehaviour
 {
     [SerializeField] private BuildingViewer buildingViewer;
+    [SerializeField] private List<UIViewer> viewers;
 
     public BuildingViewer BuildingViewer => buildingViewer;
+
     public List<UIViewer> Viewers => new List<UIViewer>() { BuildingViewer };
 
     private static UISystem instance;

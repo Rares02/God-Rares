@@ -2,7 +2,7 @@ Shader "Unlit/CellBorder"
 {
     Properties
     {
-        [MyToggle] _Highlight ("Highlight", Float) = 0
+        _Highlight ("Highlight", Float) = 0
         _MainColor ("Main Color", Color) = (1, 1, 1, 1)
     }
     SubShader

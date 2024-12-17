@@ -3,7 +3,7 @@ Shader "Unlit/InactiveImage"
     Properties
     {
         _MainTex ("Texture", 2D) = "white" {}
-        [MyToggle] _BlackAndWhite ("_BlackAndWhite", Float) = 0
+        _BlackAndWhite ("_BlackAndWhite", Float) = 0
     }
     SubShader
     {
