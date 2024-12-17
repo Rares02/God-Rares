@@ -10,8 +10,13 @@ public class ResourcePanel : MonoBehaviour
     [SerializeField] private GenericText faithText;
     [SerializeField] private GenericText followersText;
 
+    [SerializeField] private GameObject endScreen;
+
     private void Update() {
         UpdateResourcesValues();
+        if(ResourceManager.Instance.Followers.Quantity > 5000) {
+            endScreen.SetActive(true);
+        }
     }
 
     private void UpdateResourcesValues() {

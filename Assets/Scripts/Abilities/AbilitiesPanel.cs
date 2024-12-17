@@ -19,21 +19,21 @@ public class AbilitiesPanel : MonoBehaviour
             if (ability.ResourcesToConsume.Count == 0) return;
         }
         if (ResourceManager.Instance.HaveEnoughResources(GameManager.Instance.Abilities[AbilityType.Sacrifice].ResourcesToConsume)) 
-            sacrifice.material.SetFloat("_BlackAndWhite", 0);
-        else 
             sacrifice.material.SetFloat("_BlackAndWhite", 1);
+        else 
+            sacrifice.material.SetFloat("_BlackAndWhite", 0);
         if (ResourceManager.Instance.HaveEnoughResources(GameManager.Instance.Abilities[AbilityType.Bless].ResourcesToConsume))
-            bless.material.SetFloat("_BlackAndWhite", 0);
-        else
             bless.material.SetFloat("_BlackAndWhite", 1);
+        else
+            bless.material.SetFloat("_BlackAndWhite", 0);
         if (ResourceManager.Instance.HaveEnoughResources(GameManager.Instance.Abilities[AbilityType.MiracleOfLife].ResourcesToConsume))
-            miracle.material.SetFloat("_BlackAndWhite", 0);
-        else
             miracle.material.SetFloat("_BlackAndWhite", 1);
-        if (ResourceManager.Instance.HaveEnoughResources(GameManager.Instance.Abilities[AbilityType.Tribute].ResourcesToConsume))
-            tribute.material.SetFloat("_BlackAndWhite", 0);
         else
+            miracle.material.SetFloat("_BlackAndWhite", 0);
+        if (ResourceManager.Instance.HaveEnoughResources(GameManager.Instance.Abilities[AbilityType.Tribute].ResourcesToConsume))
             tribute.material.SetFloat("_BlackAndWhite", 1);
+        else
+            tribute.material.SetFloat("_BlackAndWhite", 0);
     }
 
     public void ActivateAbility(int type) {
