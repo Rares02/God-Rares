@@ -15,7 +15,9 @@ public class AbilitiesPanel : MonoBehaviour
     }
 
     private void UpdateAbilities() {
-
+        foreach (AbilitySO ability in GameManager.Instance.Abilities.AbilitiesSO) {
+            if (ability.ResourcesToConsume.Count == 0) return;
+        }
         if (ResourceManager.Instance.HaveEnoughResources(GameManager.Instance.Abilities[AbilityType.Sacrifice].ResourcesToConsume)) 
             sacrifice.material.SetFloat("_BlackAndWhite", 0);
         else 

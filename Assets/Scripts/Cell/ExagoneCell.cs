@@ -8,9 +8,17 @@ public class ExagoneCell : MonoBehaviour {
 
     public ExagoneCellData CellData => cellData;
 
+    
     private BuildingViewer buildingViewer => UISystem.Instance.BuildingViewer;
 
+    private Material material;
+
+    private void Awake() {
+        material = GetComponent<MeshRenderer>().material;
+    }
+
     public void OnClick() {
+        SelectCell();
         buildingViewer.SetClickUIForBuildingCell(this);
     }
     public void OnSelect() {
@@ -35,12 +43,14 @@ public class ExagoneCell : MonoBehaviour {
             GameObject prefabTemp = Instantiate(building.Model, transform);
         }  
     }
-
+    private void SelectCell() {
+        material.SetFloat("_Highlight", 1);
+    }
     private void HighlightCell() {
-        
+        material.SetFloat("_Highlight", 0.5f);
     }
     private void DehighlightCell() {
-
+        material.SetFloat("_Highlight", 0);
     }
 }
 

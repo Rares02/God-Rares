@@ -47,6 +47,7 @@ public class GameManager : MonoBehaviour {
         }
     }
 
+
     public void SetBuildingsData() {
         foreach (BuildingSOType buildingType in buildings.BuildingTypes) {
             int level = 1;
