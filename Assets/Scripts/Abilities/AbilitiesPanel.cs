@@ -11,7 +11,7 @@ public class AbilitiesPanel : MonoBehaviour
     [SerializeField] private Image tribute;
 
     private void Update() {
-        //UpdateAbilities();
+        UpdateAbilities();
     }
 
     private void UpdateAbilities() {
@@ -34,7 +34,7 @@ public class AbilitiesPanel : MonoBehaviour
             tribute.material.SetFloat("_BlackAndWhite", 1);
     }
 
-    public void ActivateAbillity(AbilityType type) {
-        GameManager.Instance.Abilities[type].Activate();
+    public void ActivateAbility(int type) {
+        GameManager.Instance.Abilities[(AbilityType)type].Activate();
     }
 }
